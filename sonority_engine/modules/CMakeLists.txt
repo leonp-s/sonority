@@ -1,0 +1,1 @@
+add_subdirectory(sonority_test_module)
