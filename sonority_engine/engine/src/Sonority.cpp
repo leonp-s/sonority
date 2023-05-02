@@ -5,6 +5,7 @@ static Sonority sonority;
 Sonority::Sonority() {}
 
 void Sonority::init() {
+    // This creates audio...
     audio_device_manager_.initialiseWithDefaultDevices(0, 1);
     audio_device_manager_.playTestSound();
 }
