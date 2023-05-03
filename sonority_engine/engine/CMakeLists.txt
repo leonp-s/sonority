@@ -13,7 +13,7 @@ set(LINK_COMMON
 #########################################################
 set(SOURCES src/Sonority.h src/Sonority.cpp)
 
-add_library(${BINARY} SHARED)
+add_library(${BINARY} SHARED src/SonorityRTCallback.cpp src/SonorityRTCallback.h)
 target_sources(${BINARY} PRIVATE ${SOURCES})
 
 target_link_libraries(${BINARY}
