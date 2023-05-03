@@ -17,6 +17,10 @@ void Sonority::deinit ()
 {
     audio_device_manager_.closeAudioDevice ();
 }
+void Sonority::SetPlayingNoise (bool is_playing_noise)
+{
+    sonority_rt_callback_.is_playing_noise_ = is_playing_noise;
+}
 
 extern "C"
 {
@@ -27,5 +31,9 @@ void Init ()
 void Deinit ()
 {
     sonority.deinit ();
+}
+void SetPlayingNoise (bool is_playing_noise)
+{
+    sonority.SetPlayingNoise (is_playing_noise);
 }
 }
