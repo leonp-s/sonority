@@ -21,6 +21,5 @@ public:
     void audioDeviceAboutToStart (juce::AudioIODevice * device) override;
     void audioDeviceStopped () override;
 
+    std::atomic<bool> is_playing_noise_ = false;
 };
-
-

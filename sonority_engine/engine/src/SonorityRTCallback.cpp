@@ -27,7 +27,7 @@ void SonorityRTCallback::audioDeviceIOCallbackWithContext (
         for (auto sampleIndex = 0; sampleIndex < numSamples; sampleIndex++)
         {
             auto randomSample = random.nextFloat ();
-            channel [sampleIndex] = randomSample;
+            channel [sampleIndex] = is_playing_noise_ ? randomSample : 0.f;
         }
     }
 }
