@@ -1,39 +1,45 @@
 #include "Sonority.h"
 
-static Sonority sonority;
-
-Sonority::Sonority ()
-{
-}
-
-void Sonority::init ()
-{
-    // This creates audio...
-    audio_device_manager_.initialiseWithDefaultDevices (0, 2);
-
-    audio_device_manager_.addAudioCallback (&sonority_rt_callback_);
-}
-void Sonority::deinit ()
-{
-    audio_device_manager_.closeAudioDevice ();
-}
 void Sonority::SetPlayingNoise (bool is_playing_noise)
 {
-    sonority_rt_callback_.is_playing_noise_ = is_playing_noise;
+    //    sonority_rt_callback_.is_playing_noise_ = is_playing_noise;
+}
+
+void Sonority::Prepare ()
+{
+    audio_device_manager_.initialiseWithDefaultDevices (0, 2);
+    audio_device_manager_.addAudioCallback (&sonority_rt_callback_);
+}
+
+void Sonority::Release ()
+{
+    audio_device_manager_.closeAudioDevice ();
 }
 
 extern "C"
 {
-void Init ()
+Sonority * Internal_CreateSonority ()
 {
-    sonority.init ();
+    return new Sonority ();
 }
-void Deinit ()
+
+void Internal_DestroySonority (Sonority * sonority)
 {
-    sonority.deinit ();
+    delete sonority;
 }
-void SetPlayingNoise (bool is_playing_noise)
+
+void Internal_SonoritySetPlayingNoise (Sonority * sonority, bool is_playing_noise)
 {
-    sonority.SetPlayingNoise (is_playing_noise);
+    sonority->SetPlayingNoise (is_playing_noise);
+}
+
+void Internal_SonorityPrepare (Sonority * sonority)
+{
+    sonority->Prepare ();
+}
+
+void Internal_SonorityRelease (Sonority * sonority)
+{
+    sonority->Release ();
 }
 }

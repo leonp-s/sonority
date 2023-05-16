@@ -15,7 +15,7 @@ public class NoiseInducer : MonoBehaviour
         playNoiseButton.onClick.AddListener(() =>
         {
             isNoisePlaying = !isNoisePlaying;
-            SonorityIntegration.SetPlayingNoise(isNoisePlaying);
+            //SonorityEngine.SetPlayingNoise(isNoisePlaying);
         });
     }
 }

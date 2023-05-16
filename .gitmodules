@@ -1,3 +1,0 @@
-[submodule "sonority_unity/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader"]
-	path = sonority_unity/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader
-	url = https://github.com/forrestthewoods/fts_unity_native_plugin_reloader.git
