@@ -23,6 +23,10 @@ update_from_git(catch2 "https://github.com/catchorg/Catch2"
         "97c48e0c343d26d50764fafdc90b1e630fbd10ce")
 add_subdirectory(${catch2_SOURCE_DIR})
 
+update_from_git(choc "https://github.com/Tracktion/choc"
+        "92401a359d2cbb631d09b33352f62377f58a3878")
+include_directories(${choc_SOURCE_DIR})
+
 #add_library(common INTERFACE)
 #link_libraries(common)
 
