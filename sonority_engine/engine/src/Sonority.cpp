@@ -2,7 +2,7 @@
 
 void Sonority::SetPlayingNoise (bool is_playing_noise)
 {
-    //    sonority_rt_callback_.is_playing_noise_ = is_playing_noise;
+    sonority_rt_callback_.is_playing_noise_ = is_playing_noise;
 }
 
 void Sonority::Prepare ()
