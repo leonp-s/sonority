@@ -25,6 +25,13 @@ target_compile_options(${BINARY} INTERFACE
         -Wextra
         -Werror)
 
+set(COPY_SOURCE_PATH "${PROJECT_BINARY_DIR}/engine/libsonority_engine.dylib")
+set(COPY_TARGET_PATH "${PROJECT_SOURCE_DIR}/../sonority_unity/Assets/Plugins/sonority/platforms/macos/libsonority_engine.dylib")
+add_custom_command(TARGET ${BINARY} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${COPY_SOURCE_PATH}
+        ${COPY_TARGET_PATH})
+
 #########################################################
 # TEST
 #########################################################
