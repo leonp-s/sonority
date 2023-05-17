@@ -1,23 +1,31 @@
 using System;
 using System.Runtime.InteropServices;
+using fts;
 using UnityEngine;
 
+[PluginAttr("libsonority_engine")]
 public static class SonorityInternal
 {
-    [DllImport("sonority_engine", EntryPoint="Internal_CreateSonority")]
-    public static extern IntPtr CreateSonority();
+    public delegate IntPtr CreateSonorityDelegate();
+    public delegate void DestroySonorityDelegate(IntPtr sonority);
+    public delegate void SonorityPrepareDelegate(IntPtr sonority);
+    public delegate void SonorityReleaseDelegate(IntPtr sonority);
+    public delegate void SonoritySetPlayingNoiseDelegate(IntPtr sonority, bool isPlayingNoise);
+
+    [PluginFunctionAttr("Internal_CreateSonority")] 
+    public static readonly CreateSonorityDelegate CreateSonority = null;
     
-    [DllImport("sonority_engine", EntryPoint="Internal_DestroySonority")]
-    public static extern void DestroySonority(IntPtr sonority);
-        
-    [DllImport("sonority_engine", EntryPoint="Internal_SonorityPrepare")]
-    public static extern void SonorityPrepare(IntPtr sonority);
-        
-    [DllImport("sonority_engine", EntryPoint="Internal_SonorityRelease")]
-    public static extern void SonorityRelease(IntPtr sonority);
-        
-    [DllImport("sonority_engine", EntryPoint="Internal_SonoritySetPlayingNoise")]
-    public static extern void SonoritySetPlayingNoise(IntPtr sonority, bool isPlayingNoise);
+    [PluginFunctionAttr("Internal_DestroySonority")] 
+    public static readonly DestroySonorityDelegate DestroySonority = null;
+    
+    [PluginFunctionAttr("Internal_SonorityPrepare")] 
+    public static readonly SonorityPrepareDelegate SonorityPrepare = null;
+    
+    [PluginFunctionAttr("Internal_SonorityRelease")] 
+    public static readonly SonorityReleaseDelegate SonorityRelease = null;
+    
+    [PluginFunctionAttr("Internal_SonoritySetPlayingNoise")] 
+    public static readonly SonoritySetPlayingNoiseDelegate SonoritySetPlayingNoise = null;
 }
 
 public class SonorityEngine

@@ -9,8 +9,9 @@
         <e p="Plugins" t="Include">
           <e p="sonority" t="Include">
             <e p="src" t="Include">
-              <e p="fts_unity_native_plugin_reloader" t="Include" />
+              <e p="NativePluginLoader.cs" t="Include" />
               <e p="SonorityAudioSource.cs" t="Include" />
+              <e p="SonorityEditor.cs" t="Include" />
               <e p="SonorityIntegration.cs" t="Include" />
             </e>
           </e>

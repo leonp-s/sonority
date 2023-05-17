@@ -1,7 +1,3 @@
-//
-// Created by Micah Strange on 03/05/2023.
-//
-
 #include "SonorityRTCallback.h"
 void SonorityRTCallback::audioDeviceIOCallback (const float ** inputChannelData,
                                                 int numInputChannels,

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="" />
+    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,24 +22,83 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="657">
+              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
               <folding>
-                <marker date="1684268586227" expanded="true" signature="6:70" ph="..." />
-                <marker date="1684268586227" expanded="true" signature="108:856" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="885:1479" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="965:1038" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1061:1132" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1159:1230" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1257:1328" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1382:1477" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1530:1807" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1594:1736" ph="{...}" />
-                <marker date="1684268586227" expanded="true" signature="1758:1805" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="6:81" ph="..." />
+                <marker date="1684336992825" expanded="true" signature="154:1195" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1224:1818" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1304:1377" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1400:1471" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1498:1569" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1596:1667" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1721:1816" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1869:2146" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="1933:2075" ph="{...}" />
+                <marker date="1684336992825" expanded="true" signature="2097:2144" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="614">
+              <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+              <folding>
+                <marker date="1684339203954" expanded="true" signature="0:87" ph="/* LICENSE ... */" />
+                <marker date="1684339203954" expanded="true" signature="95:193" ph="..." />
+                <marker date="1684339203954" expanded="true" signature="208:10487" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="216:432" ph="/* ------------------------------------------------------------------------ ... */" />
+                <marker date="1684339203954" expanded="true" signature="463:3668" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="2225:2610" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="2401:2481" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="2498:2575" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="2667:2775" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="2852:3200" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="2986:3066" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="3083:3164" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="3675:3906" ph="/* ------------------------------------------------------------------------ ... */" />
+                <marker date="1684339203954" expanded="true" signature="4016:9378" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="4303:4649" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="4321:4639" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="4363:4589" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="4691:5188" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="4728:5018" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="5215:5282" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="5345:5515" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="5404:5469" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="5525:5618" ph="/* Load all plugins with 'PluginAttr' ... */" />
+                <marker date="1684339203954" expanded="true" signature="5642:8529" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="5656:5761" ph="/* TODO: Could loop over just Assembly-CSharp.dll in most cases? ... */" />
+                <marker date="1684339203954" expanded="true" signature="5881:8507" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="5980:8493" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="6179:8475" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="6586:7022" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="7262:8453" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="7498:8427" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="8540:8902" ph="/* It is *strongly* recommended to set Editor-&gt;Preferences-&gt;Script Changes While Playing = Recompile After Finish ... */" />
+                <marker date="1684339203954" expanded="true" signature="9013:9159" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="9057:9149" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="9227:9372" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="9270:9362" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="9385:9573" ph="/* ------------------------------------------------------------------------ ... */" />
+                <marker date="1684339203954" expanded="true" signature="9706:9910" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="9851:9904" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="9917:10123" ph="/* ------------------------------------------------------------------------ ... */" />
+                <marker date="1684339203954" expanded="true" signature="10264:10484" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="10421:10478" ph="{...}" />
+                <marker date="1684339203954" expanded="true" signature="10506:13257" ph="/* ------------------------------------------------------------------------------ ... */" />
               </folding>
             </state>
           </provider>
@@ -48,6 +117,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3F2977EB-306B-4538-8F22-4FC6CC4DB2C4/50B/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
@@ -59,6 +130,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader/NativeReloadUnityProject/Assets/fts_native_plugin_reloader/Scripts/NativePluginLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs" />
       </list>
     </option>
   </component>
@@ -80,47 +152,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
-      <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
-              <item name="sonority" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
-              <item name="sonority" type="1045f7f1:UnityExplorerNode" />
-              <item name="src" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -179,10 +219,10 @@
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="81266">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="79354">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="81266" />
+      <option name="pid" value="79354" />
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
@@ -204,11 +244,12 @@
       <workItem from="1683129998978" duration="26000" />
       <workItem from="1683130104483" duration="731000" />
       <workItem from="1684254421088" duration="7045000" />
+      <workItem from="1684336442308" duration="3242000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8812000" />
+    <option name="totallyTimeSpent" value="12054000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -223,13 +264,13 @@
     <frame x="0" y="25" width="2560" height="1415" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25178713" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25377283" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.022779044" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.32801822" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -300,39 +341,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader/NativeReloadUnityProject/Assets/fts_native_plugin_reloader/Scripts/NativePluginLoader.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader/NativeReloadUnityProject/Assets/fts_native_plugin_reloader/Scripts/NativePluginLoader.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/UnityNativeTool/Attributes.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="197" column="50" lean-forward="true" selection-start-line="197" selection-start-column="50" selection-end-line="197" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/UnityNativeTool/Attributes.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+        <state relative-caret-position="614">
+          <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+          <folding>
+            <marker date="1684339203954" expanded="true" signature="0:87" ph="/* LICENSE ... */" />
+            <marker date="1684339203954" expanded="true" signature="95:193" ph="..." />
+            <marker date="1684339203954" expanded="true" signature="208:10487" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="216:432" ph="/* ------------------------------------------------------------------------ ... */" />
+            <marker date="1684339203954" expanded="true" signature="463:3668" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="2225:2610" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="2401:2481" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="2498:2575" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="2667:2775" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="2852:3200" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="2986:3066" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="3083:3164" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="3675:3906" ph="/* ------------------------------------------------------------------------ ... */" />
+            <marker date="1684339203954" expanded="true" signature="4016:9378" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="4303:4649" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="4321:4639" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="4363:4589" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="4691:5188" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="4728:5018" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="5215:5282" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="5345:5515" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="5404:5469" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="5525:5618" ph="/* Load all plugins with 'PluginAttr' ... */" />
+            <marker date="1684339203954" expanded="true" signature="5642:8529" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="5656:5761" ph="/* TODO: Could loop over just Assembly-CSharp.dll in most cases? ... */" />
+            <marker date="1684339203954" expanded="true" signature="5881:8507" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="5980:8493" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="6179:8475" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="6586:7022" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="7262:8453" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="7498:8427" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="8540:8902" ph="/* It is *strongly* recommended to set Editor-&gt;Preferences-&gt;Script Changes While Playing = Recompile After Finish ... */" />
+            <marker date="1684339203954" expanded="true" signature="9013:9159" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="9057:9149" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="9227:9372" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="9270:9362" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="9385:9573" ph="/* ------------------------------------------------------------------------ ... */" />
+            <marker date="1684339203954" expanded="true" signature="9706:9910" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="9851:9904" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="9917:10123" ph="/* ------------------------------------------------------------------------ ... */" />
+            <marker date="1684339203954" expanded="true" signature="10264:10484" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="10421:10478" ph="{...}" />
+            <marker date="1684339203954" expanded="true" signature="10506:13257" ph="/* ------------------------------------------------------------------------------ ... */" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="657">
+          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
           <folding>
-            <marker date="1684268586227" expanded="true" signature="6:70" ph="..." />
-            <marker date="1684268586227" expanded="true" signature="108:856" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="885:1479" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="965:1038" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1061:1132" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1159:1230" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1257:1328" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1382:1477" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1530:1807" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1594:1736" ph="{...}" />
-            <marker date="1684268586227" expanded="true" signature="1758:1805" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="6:81" ph="..." />
+            <marker date="1684336992825" expanded="true" signature="154:1195" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1224:1818" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1304:1377" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1400:1471" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1498:1569" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1596:1667" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1721:1816" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1869:2146" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="1933:2075" ph="{...}" />
+            <marker date="1684336992825" expanded="true" signature="2097:2144" ph="{...}" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
