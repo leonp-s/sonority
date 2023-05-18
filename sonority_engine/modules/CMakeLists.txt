@@ -1,2 +1,3 @@
+add_subdirectory(audio_engine)
 add_subdirectory(sonority_test_module)
 add_subdirectory(sofa_renderer)
