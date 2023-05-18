@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ContentModelUserStore">
-    <attachedFolders />
+  <component name="UserContentModel">
+    <attachedFolders>
+      <Path>../../../../Library/Unity/cache/packages/packages.unity.com/com.unity.mathematics@1.2.1</Path>
+    </attachedFolders>
     <explicitIncludes>
       <Path>Library/PackageCache/com.unity.burst@1.8.4</Path>
       <Path>Library/PackageCache/com.unity.collab-proxy@2.0.4</Path>
@@ -53,7 +55,6 @@
       <Path>Library/PackageCache/com.unity.visualscripting@1.8.0</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
-      <Path>../../../../Library/Unity/cache/packages/packages.unity.com/com.unity.mathematics@1.2.1</Path>
     </explicitIncludes>
     <explicitExcludes>
       <Path>.idea</Path>
@@ -62,10 +63,5 @@
       <Path>UserSettings</Path>
       <Path>obj</Path>
     </explicitExcludes>
-  </component>
-  <component name="UserContentModel">
-    <attachedFolders />
-    <explicitIncludes />
-    <explicitExcludes />
   </component>
 </project>

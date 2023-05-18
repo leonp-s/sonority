@@ -12,6 +12,8 @@ public static class SonorityInternal
     public delegate void SonorityReleaseDelegate(IntPtr sonority);
     public delegate void SonoritySetPlayingNoiseDelegate(IntPtr sonority, bool isPlayingNoise);
 
+    public delegate void SonorityPlayWavFileDelegate(IntPtr sonority);
+
     [PluginFunctionAttr("Internal_CreateSonority")] 
     public static readonly CreateSonorityDelegate CreateSonority = null;
     
@@ -26,6 +28,9 @@ public static class SonorityInternal
     
     [PluginFunctionAttr("Internal_SonoritySetPlayingNoise")] 
     public static readonly SonoritySetPlayingNoiseDelegate SonoritySetPlayingNoise = null;
+
+    [PluginFunctionAttr("Internal_SonorityPlayWavFile")]
+    public static readonly SonorityPlayWavFileDelegate SonorityPlayWavFile = null;
 }
 
 public class SonorityEngine
@@ -56,6 +61,11 @@ public class SonorityEngine
     {
         SonorityInternal.SonoritySetPlayingNoise(_sonorityEngine, isPlayingNoise);
     }
+
+    public void PlayWavFile()
+    {
+        SonorityInternal.SonorityPlayWavFile(_sonorityEngine);
+    }
 };
 
 public class SonorityIntegration : MonoBehaviour
@@ -66,11 +76,22 @@ public class SonorityIntegration : MonoBehaviour
     {
         _sonorityEngine = new SonorityEngine();
         _sonorityEngine.Prepare();
-        _sonorityEngine.SetPlayingNoise(true);
+
     }
 
     void OnDestroy()
     {
         _sonorityEngine.Release();
+    }
+
+    
+    public void SetPlayingNoise(bool isNoisePlaying)
+    {
+        _sonorityEngine.SetPlayingNoise(isNoisePlaying);
+    }
+
+    public void PlayWavFile()
+    {
+        _sonorityEngine.PlayWavFile();
     }
 }

@@ -11,17 +11,20 @@ public class NoiseInducer : MonoBehaviour
     public Button playNoiseButton;
     public Button playWavFileButton;
     private bool isNoisePlaying = false;
+    public SonorityIntegration SonorityIntegration;
+    
     private void Awake()
     {
         playNoiseButton.onClick.AddListener(() =>
         {
             isNoisePlaying = !isNoisePlaying;
-            //SonorityEngine.SetPlayingNoise(isNoisePlaying);
+            SonorityIntegration.SetPlayingNoise(isNoisePlaying);
         });
         
         playWavFileButton.onClick.AddListener(() =>
         {
-            SonorityIntegration.PlayWavfile();
+
+           SonorityIntegration.PlayWavFile();
         });
     }
 }

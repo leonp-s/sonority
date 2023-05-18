@@ -5,106 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/fts_unity_native_plugin_reloader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
-              <folding>
-                <marker date="1684336992825" expanded="true" signature="6:81" ph="..." />
-                <marker date="1684336992825" expanded="true" signature="154:1195" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1224:1818" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1304:1377" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1400:1471" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1498:1569" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1596:1667" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1721:1816" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1869:2146" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="1933:2075" ph="{...}" />
-                <marker date="1684336992825" expanded="true" signature="2097:2144" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
-              <folding>
-                <marker date="1684339203954" expanded="true" signature="0:87" ph="/* LICENSE ... */" />
-                <marker date="1684339203954" expanded="true" signature="95:193" ph="..." />
-                <marker date="1684339203954" expanded="true" signature="208:10487" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="216:432" ph="/* ------------------------------------------------------------------------ ... */" />
-                <marker date="1684339203954" expanded="true" signature="463:3668" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="2225:2610" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="2401:2481" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="2498:2575" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="2667:2775" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="2852:3200" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="2986:3066" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="3083:3164" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="3675:3906" ph="/* ------------------------------------------------------------------------ ... */" />
-                <marker date="1684339203954" expanded="true" signature="4016:9378" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="4303:4649" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="4321:4639" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="4363:4589" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="4691:5188" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="4728:5018" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="5215:5282" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="5345:5515" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="5404:5469" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="5525:5618" ph="/* Load all plugins with 'PluginAttr' ... */" />
-                <marker date="1684339203954" expanded="true" signature="5642:8529" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="5656:5761" ph="/* TODO: Could loop over just Assembly-CSharp.dll in most cases? ... */" />
-                <marker date="1684339203954" expanded="true" signature="5881:8507" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="5980:8493" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="6179:8475" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="6586:7022" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="7262:8453" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="7498:8427" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="8540:8902" ph="/* It is *strongly* recommended to set Editor-&gt;Preferences-&gt;Script Changes While Playing = Recompile After Finish ... */" />
-                <marker date="1684339203954" expanded="true" signature="9013:9159" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="9057:9149" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="9227:9372" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="9270:9362" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="9385:9573" ph="/* ------------------------------------------------------------------------ ... */" />
-                <marker date="1684339203954" expanded="true" signature="9706:9910" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="9851:9904" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="9917:10123" ph="/* ------------------------------------------------------------------------ ... */" />
-                <marker date="1684339203954" expanded="true" signature="10264:10484" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="10421:10478" ph="{...}" />
-                <marker date="1684339203954" expanded="true" signature="10506:13257" ph="/* ------------------------------------------------------------------------------ ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -116,13 +29,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3F2977EB-306B-4538-8F22-4FC6CC4DB2C4/50B/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6248CC5-B69F-4544-BE55-62DD35A4AEAE/56/3395d77b/Application.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -167,67 +78,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
-    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/micahstrange/Library/Application Support/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
+      "/Users/micahstrange/Library/Application Support/JetBrains/Rider2022.3/resharper-host/SourcesCache",
+      "/Users/micahstrange/.local/share/Symbols/src"
+    ]
+  }
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Wow.app/Contents/MacOS/unity_audio_engine" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Wow.app/Contents/MacOS" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.25f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.25f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="userSelectedPid" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="79354">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="79354" />
-      <option name="userSelectedPid" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -245,6 +157,7 @@
       <workItem from="1683130104483" duration="731000" />
       <workItem from="1684254421088" duration="7045000" />
       <workItem from="1684336442308" duration="3242000" />
+      <workItem from="1684418731133" duration="2041000" />
     </task>
     <servers />
   </component>
@@ -292,7 +205,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />

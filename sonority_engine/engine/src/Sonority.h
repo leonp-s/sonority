@@ -27,5 +27,5 @@ void Internal_DestroySonority (Sonority * sonority);
 void Internal_SonorityPrepare (Sonority * sonority);
 void Internal_SonorityRelease (Sonority * sonority);
 void Internal_SonoritySetPlayingNoise (Sonority * sonority, bool is_playing_noise);
-void Internal_PlayWavFile (Sonority * sonority);
+void Internal_SonorityPlayWavFile (Sonority * sonority);
 }

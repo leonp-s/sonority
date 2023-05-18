@@ -47,7 +47,7 @@ void Internal_SonorityRelease (Sonority * sonority)
     sonority->Release ();
 }
 
-void PlayWavFile (Sonority * sonority)
+void Internal_SonorityPlayWavFile (Sonority * sonority)
 {
     sonority->PlayWavFile ();
 }
