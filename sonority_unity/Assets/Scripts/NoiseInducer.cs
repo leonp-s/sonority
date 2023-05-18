@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class NoiseInducer : MonoBehaviour
 {
     public Button playNoiseButton;
+    public Button playWavFileButton;
     private bool isNoisePlaying = false;
     private void Awake()
     {
@@ -16,6 +17,11 @@ public class NoiseInducer : MonoBehaviour
         {
             isNoisePlaying = !isNoisePlaying;
             //SonorityEngine.SetPlayingNoise(isNoisePlaying);
+        });
+        
+        playWavFileButton.onClick.AddListener(() =>
+        {
+            SonorityIntegration.PlayWavfile();
         });
     }
 }

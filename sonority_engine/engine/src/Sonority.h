@@ -13,6 +13,7 @@ public:
     void Release ();
 
     void SetPlayingNoise (bool is_playing_noise);
+    void PlayWavFile ();
 
 private:
     juce::AudioDeviceManager audio_device_manager_;

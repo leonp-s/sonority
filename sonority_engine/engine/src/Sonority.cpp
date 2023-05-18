@@ -22,6 +22,10 @@ Sonority * Internal_CreateSonority ()
 {
     return new Sonority ();
 }
+void Sonority::PlayWavFile ()
+{
+    sonority_rt_callback_.ScheduleFile ();
+}
 
 void Internal_DestroySonority (Sonority * sonority)
 {
@@ -41,5 +45,9 @@ void Internal_SonorityPrepare (Sonority * sonority)
 void Internal_SonorityRelease (Sonority * sonority)
 {
     sonority->Release ();
+}
+void PlayWavFile ()
+{
+    sonority.PlayWavFile ();
 }
 }
