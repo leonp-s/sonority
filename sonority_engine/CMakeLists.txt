@@ -27,8 +27,15 @@ update_from_git(choc "https://github.com/Tracktion/choc"
         "92401a359d2cbb631d09b33352f62377f58a3878")
 include_directories(${choc_SOURCE_DIR})
 
-#add_library(common INTERFACE)
-#link_libraries(common)
+update_from_git(libmysofa "https://github.com/hoene/libmysofa"
+        "bed445ba48ad9faf0e758b54af3f6075949d27fe")
+set(BUILD_TESTS false)
+add_subdirectory(${libmysofa_SOURCE_DIR})
+include_directories(${libmysofa_SOURCE_DIR}/src)
+
+add_library(common INTERFACE)
+target_link_libraries(common INTERFACE mysofa-static)
+link_libraries(common)
 
 add_subdirectory(modules)
 add_subdirectory(engine)
