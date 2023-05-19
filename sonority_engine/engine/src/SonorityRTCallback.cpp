@@ -9,14 +9,6 @@ SonorityRTCallback::SonorityRTCallback ()
         juce::File ("/Users/micahstrange/sonority/sonority_engine/vocdemo.wav")));
     fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
     reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
-
-    int filter_length;
-    int err;
-    struct MYSOFA_EASY *hrtf = NULL;
-
-    hrtf = mysofa_open("file.sofa", 48000, &filter_length, &err);
-    if(hrtf==NULL)
-        jassert (false);
 }
 void SonorityRTCallback::audioDeviceIOCallbackWithContext (
     const float ** inputChannelData,

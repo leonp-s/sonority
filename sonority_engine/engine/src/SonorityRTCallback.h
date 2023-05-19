@@ -2,7 +2,6 @@
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_formats/juce_audio_formats.h>
 #include <juce_core/juce_core.h>
-#include <hrtf/mysofa.h>
 
 class SonorityRTCallback : public juce::AudioIODeviceCallback
 {

@@ -6,7 +6,8 @@ set(LINK_JUCE
         juce::juce_audio_utils)
 
 set(LINK_COMMON
-        sonority_test_module)
+        sonority_test_module
+        sofa_renderer)
 
 #########################################################
 # SRC
