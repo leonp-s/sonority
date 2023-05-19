@@ -28,7 +28,7 @@ update_from_git(choc "https://github.com/Tracktion/choc"
 include_directories(${choc_SOURCE_DIR})
 
 update_from_git(libmysofa "https://github.com/hoene/libmysofa"
-        "bed445ba48ad9faf0e758b54af3f6075949d27fe")
+        "890400ebd092c574707d0c132124f8ff047e20e1")
 set(BUILD_TESTS false)
 add_subdirectory(${libmysofa_SOURCE_DIR})
 include_directories(${libmysofa_SOURCE_DIR}/src)
