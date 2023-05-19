@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="" />
+    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -9,6 +9,16 @@ SonorityRTCallback::SonorityRTCallback ()
         juce::File ("/Users/micahstrange/sonority/sonority_engine/vocdemo.wav")));
     fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
     reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
+
+    juce::AudioBuffer<float> hrir_buffer {2, sofa_filter_.GetFilterLength ()};
+    float left_delay;
+    float right_delay;
+    sofa_filter_.GetFilterForCartesian (juce::dsp::AudioBlock<float> {hrir_buffer},
+                                        left_delay,
+                                        right_delay,
+                                        {.x = 0, .y = 0, .z = 0});
+
+    sofa_renderer_.SetFilter (hrir_buffer, left_delay, right_delay, 48000);
 }
 void SonorityRTCallback::audioDeviceIOCallbackWithContext (
     const float ** inputChannelData,
@@ -42,15 +52,30 @@ void SonorityRTCallback::audioDeviceIOCallbackWithContext (
         player += numSamples;
     }
 
+    juce::dsp::AudioBlock<float> process_buffer {outputChannelData,
+                                                 static_cast<size_t> (numOutputChannels),
+                                                 static_cast<size_t> (numSamples)};
+    juce::dsp::ProcessContextReplacing<float> process_context {process_buffer};
+    sofa_renderer_.process (process_context);
+
     std::erase_if (schedule_,
                    [&] (int player) { return player > fileBuffer_.getNumSamples () - numSamples; });
 }
+
 void SonorityRTCallback::audioDeviceAboutToStart (juce::AudioIODevice * device)
 {
+    sofa_renderer_.prepare (juce::dsp::ProcessSpec {
+        .sampleRate = device->getCurrentSampleRate (),
+        .maximumBlockSize = static_cast<juce::uint32> (device->getDefaultBufferSize ()),
+        .numChannels =
+            static_cast<juce::uint32> (device->getActiveOutputChannels ().toInteger ())});
 }
+
 void SonorityRTCallback::audioDeviceStopped ()
 {
+    sofa_renderer_.reset ();
 }
+
 void SonorityRTCallback::ScheduleFile ()
 {
     schedule_.push_back (0);
