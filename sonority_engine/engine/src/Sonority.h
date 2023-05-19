@@ -14,6 +14,7 @@ public:
 
     void SetPlayingNoise (bool is_playing_noise);
     void PlayWavFile ();
+    void UpdateSphericalCoordinates (float azimuth, float elevation);
 
 private:
     juce::AudioDeviceManager audio_device_manager_;
@@ -28,4 +29,5 @@ void Internal_SonorityPrepare (Sonority * sonority);
 void Internal_SonorityRelease (Sonority * sonority);
 void Internal_SonoritySetPlayingNoise (Sonority * sonority, bool is_playing_noise);
 void Internal_SonorityPlayWavFile (Sonority * sonority);
+void Internal_SetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation);
 }

@@ -80,3 +80,16 @@ void SonorityRTCallback::ScheduleFile ()
 {
     schedule_.push_back (0);
 }
+
+void SonorityRTCallback::UpdateFilters (float azimuth, float elevation)
+{
+    juce::AudioBuffer<float> hrir_buffer {2, sofa_filter_.GetFilterLength ()};
+    float left_delay;
+    float right_delay;
+    sofa_filter_.GetFilterForCartesian (juce::dsp::AudioBlock<float> {hrir_buffer},
+                                        left_delay,
+                                        right_delay,
+                                        { azimuth, elevation});
+
+    sofa_renderer_.SetFilter (hrir_buffer, left_delay, right_delay, 48000);
+}

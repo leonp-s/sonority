@@ -24,6 +24,8 @@ public:
 
     void ScheduleFile ();
 
+    void UpdateFilters(float azimuth, float elevation);
+
     std::atomic<bool> is_playing_noise_ = false;
 
 private:

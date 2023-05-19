@@ -27,6 +27,11 @@ void Sonority::PlayWavFile ()
     sonority_rt_callback_.ScheduleFile ();
 }
 
+void Sonority::UpdateSphericalCoordinates (float azimuth, float elevation)
+{
+    sonority_rt_callback_.UpdateFilters (azimuth, elevation);
+}
+
 void Internal_DestroySonority (Sonority * sonority)
 {
     delete sonority;
@@ -50,5 +55,10 @@ void Internal_SonorityRelease (Sonority * sonority)
 void Internal_SonorityPlayWavFile (Sonority * sonority)
 {
     sonority->PlayWavFile ();
+}
+
+void Internal_SetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation)
+{
+    sonority->UpdateSphericalCoordinates (azimuth, elevation);
 }
 }
