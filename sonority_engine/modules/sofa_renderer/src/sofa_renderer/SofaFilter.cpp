@@ -18,10 +18,11 @@ int SofaFilter::GetFilterLength () const
     return filter_length_;
 }
 
-void SofaFilter::GetFilterForCartesian (juce::dsp::AudioBlock<float> hrir_block,
-                                        float & left_delay,
-                                        float & right_delay,
-                                        SofaFilter::SphericalCoordinates spherical_coordinates)
+void SofaFilter::GetFilterForSphericalCoordinates (
+    juce::dsp::AudioBlock<float> hrir_block,
+    float & left_delay,
+    float & right_delay,
+    SofaFilter::SphericalCoordinates spherical_coordinates)
 {
     static constexpr int kLeftChannel = 0;
     static constexpr int kRightChannel = 1;

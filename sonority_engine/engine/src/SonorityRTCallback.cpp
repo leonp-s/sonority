@@ -13,10 +13,11 @@ SonorityRTCallback::SonorityRTCallback ()
     juce::AudioBuffer<float> hrir_buffer {2, sofa_filter_.GetFilterLength ()};
     float left_delay;
     float right_delay;
-    sofa_filter_.GetFilterForCartesian (juce::dsp::AudioBlock<float> {hrir_buffer},
-                                        left_delay,
-                                        right_delay,
-                                        {.azimuth_degrees = 160.f, .elevation_degrees = 45.f});
+    sofa_filter_.GetFilterForSphericalCoordinates (
+        juce::dsp::AudioBlock<float> {hrir_buffer},
+        left_delay,
+        right_delay,
+        {.azimuth_degrees = 160.f, .elevation_degrees = 45.f});
 
     sofa_renderer_.SetFilter (hrir_buffer, left_delay, right_delay, 48000);
 }
