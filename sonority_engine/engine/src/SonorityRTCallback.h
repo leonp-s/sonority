@@ -29,7 +29,7 @@ public:
 private:
     SofaFilter sofa_filter_ {SofaFilter::OpenOptions {
         .hrtf_path = std::filesystem::path (
-            "/Users/LeonPS/Documents/Development/sonority/sonority_engine/MIT_KEMAR_normal_pinna.sofa"),
+            "/Users/micahstrange/sonority/sonority_engine/MIT_KEMAR_normal_pinna.sofa"),
         .sample_rate = 48000,
     }};
     SofaRenderer sofa_renderer_;

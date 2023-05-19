@@ -1,2 +1,3 @@
 sonority_engine/cmake-build-debug
 *.DS_Store
+sonority_unity/Assets/Plugins/libsonority_engine.dylib

@@ -21,8 +21,16 @@ public:
     void reset () override;
 
 private:
+    static constexpr int kLeftChannel = 0;
+    static constexpr int kRightChannel = 1;
+
+    float sample_rate_;
+
     BufferTransfer buffer_transfer_;
     juce::dsp::Convolution convolver_;
+
+    using SofaDelayLine = juce::dsp::DelayLine<float, juce::dsp::DelayLineInterpolationTypes::None>;
+    std::array<SofaDelayLine, 2> delay_lines_;
     float left_delay_;
     float right_delay_;
 };

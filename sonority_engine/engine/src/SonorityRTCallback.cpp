@@ -6,7 +6,7 @@ SonorityRTCallback::SonorityRTCallback ()
     audioFormatManager.registerBasicFormats ();
 
     std::unique_ptr<juce::AudioFormatReader> reader (audioFormatManager.createReaderFor (
-        juce::File ("/Users/LeonPS/Documents/Development/sonority/sonority_engine/vocdemo.wav")));
+        juce::File ("/Users/micahstrange/sonority/sonority_engine/vocdemo.wav")));
     fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
     reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
 
@@ -16,7 +16,7 @@ SonorityRTCallback::SonorityRTCallback ()
     sofa_filter_.GetFilterForCartesian (juce::dsp::AudioBlock<float> {hrir_buffer},
                                         left_delay,
                                         right_delay,
-                                        {.azimuth_degrees = 270.f, .elevation_degrees = 0.f});
+                                        {.azimuth_degrees = 160.f, .elevation_degrees = 45.f});
 
     sofa_renderer_.SetFilter (hrir_buffer, left_delay, right_delay, 48000);
 }
