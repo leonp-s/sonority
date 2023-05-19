@@ -14,11 +14,10 @@ public:
         float sample_rate;
     };
 
-    struct CartesianCoordinates
+    struct SphericalCoordinates
     {
-        float x;
-        float y;
-        float z;
+        float azimuth_degrees;
+        float elevation_degrees;
     };
 
     explicit SofaFilter (const OpenOptions & open_options);
@@ -26,7 +25,7 @@ public:
     void GetFilterForCartesian (juce::dsp::AudioBlock<float> hrir_block,
                                 float & left_delay,
                                 float & right_delay,
-                                CartesianCoordinates cartesian_coordinates);
+                                SphericalCoordinates spherical_coordinates);
 
     ~SofaFilter ();
 

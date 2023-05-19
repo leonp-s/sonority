@@ -21,15 +21,18 @@ int SofaFilter::GetFilterLength () const
 void SofaFilter::GetFilterForCartesian (juce::dsp::AudioBlock<float> hrir_block,
                                         float & left_delay,
                                         float & right_delay,
-                                        SofaFilter::CartesianCoordinates cartesian_coordinates)
+                                        SofaFilter::SphericalCoordinates spherical_coordinates)
 {
     static constexpr int kLeftChannel = 0;
     static constexpr int kRightChannel = 1;
 
+    auto coordinates = std::array<float, 3> {
+        spherical_coordinates.azimuth_degrees, spherical_coordinates.elevation_degrees, 1.f};
+    mysofa_s2c (coordinates.data ());
     mysofa_getfilter_float (hrtf_,
-                            cartesian_coordinates.x,
-                            cartesian_coordinates.y,
-                            cartesian_coordinates.z,
+                            coordinates [0],
+                            coordinates [1],
+                            coordinates [2],
                             hrir_block.getChannelPointer (kLeftChannel),
                             hrir_block.getChannelPointer (kRightChannel),
                             &left_delay,
