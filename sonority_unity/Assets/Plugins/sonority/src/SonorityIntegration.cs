@@ -11,8 +11,9 @@ public static class SonorityInternal
     public delegate void SonorityPrepareDelegate(IntPtr sonority);
     public delegate void SonorityReleaseDelegate(IntPtr sonority);
     public delegate void SonoritySetPlayingNoiseDelegate(IntPtr sonority, bool isPlayingNoise);
-
     public delegate void SonorityPlayWavFileDelegate(IntPtr sonority);
+    public delegate void SonoritySetSphericalCoordinatesDelegate(IntPtr sonority, float azimuth, float elevation);
+
 
     [PluginFunctionAttr("Internal_CreateSonority")] 
     public static readonly CreateSonorityDelegate CreateSonority = null;
@@ -31,6 +32,9 @@ public static class SonorityInternal
 
     [PluginFunctionAttr("Internal_SonorityPlayWavFile")]
     public static readonly SonorityPlayWavFileDelegate SonorityPlayWavFile = null;
+    
+    [PluginFunctionAttr("Internal_SonoritySetSphericalCoordinates")]
+    public static readonly SonoritySetSphericalCoordinatesDelegate SonoritySetSphericalCoordinates = null;
 }
 
 public class SonorityEngine
@@ -66,6 +70,11 @@ public class SonorityEngine
     {
         SonorityInternal.SonorityPlayWavFile(_sonorityEngine);
     }
+
+    public void SetSphericalCoordinates(float azimuth, float elevation)
+    {
+        SonorityInternal.SonoritySetSphericalCoordinates(_sonorityEngine, azimuth, elevation);
+    }
 };
 
 public class SonorityIntegration : MonoBehaviour
@@ -93,5 +102,10 @@ public class SonorityIntegration : MonoBehaviour
     public void PlayWavFile()
     {
         _sonorityEngine.PlayWavFile();
+    }
+
+    public void SetSphericalCoordinates(float azimuth, float elevation)
+    {
+        _sonorityEngine.SetSphericalCoordinates(azimuth, elevation);
     }
 }

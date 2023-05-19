@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/libsonority_engine.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +28,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f6248cc5b69f4544be5562dd35a4aeae159e00/b8/c8ad1ff6/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">

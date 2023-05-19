@@ -8,23 +8,41 @@ using UnityEngine.UI;
 
 public class NoiseInducer : MonoBehaviour
 {
-    public Button playNoiseButton;
-    public Button playWavFileButton;
+    public Button PlayNoiseButton;
+    public Button PlayWavFileButton;
+    public Slider AzimuthSlider;
+    public Slider ElevationSlider;
+    
     private bool isNoisePlaying = false;
     public SonorityIntegration SonorityIntegration;
     
     private void Awake()
     {
-        playNoiseButton.onClick.AddListener(() =>
+        PlayNoiseButton.onClick.AddListener(() =>
         {
             isNoisePlaying = !isNoisePlaying;
             SonorityIntegration.SetPlayingNoise(isNoisePlaying);
         });
         
-        playWavFileButton.onClick.AddListener(() =>
+        PlayWavFileButton.onClick.AddListener(() =>
         {
 
            SonorityIntegration.PlayWavFile();
         });
+        
+        AzimuthSlider.onValueChanged.AddListener((float value) =>
+        {
+            UpdateSphericalCoordinates();
+        });
+        
+        ElevationSlider.onValueChanged.AddListener((float value) =>
+        {
+            UpdateSphericalCoordinates();
+        });
+    }
+
+    private void UpdateSphericalCoordinates()
+    {
+        SonorityIntegration.SetSphericalCoordinates(AzimuthSlider.value * 180, ElevationSlider.value * 180);
     }
 }
