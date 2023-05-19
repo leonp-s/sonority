@@ -22,10 +22,10 @@ public:
 
     explicit SofaFilter (const OpenOptions & open_options);
     [[nodiscard]] int GetFilterLength () const;
-    void GetFilterForCartesian (juce::dsp::AudioBlock<float> hrir_block,
-                                float & left_delay,
-                                float & right_delay,
-                                SphericalCoordinates spherical_coordinates);
+    void GetFilterForSphericalCoordinates (juce::dsp::AudioBlock<float> hrir_block,
+                                           float & left_delay,
+                                           float & right_delay,
+                                           SphericalCoordinates spherical_coordinates);
 
     ~SofaFilter ();
 
