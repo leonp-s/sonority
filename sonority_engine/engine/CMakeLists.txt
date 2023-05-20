@@ -6,7 +6,7 @@ set(LINK_JUCE
         juce::juce_audio_utils)
 
 set(LINK_COMMON
-        audio_engine)
+        audio_engine
         sonority_test_module
         sofa_renderer)
 
