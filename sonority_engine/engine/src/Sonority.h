@@ -1,7 +1,10 @@
 #pragma once
 #include "SonorityRTCallback.h"
+#include "UnityNativeLogger.h"
 #include "juce_audio_devices/juce_audio_devices.h"
 #include "sonority_test_module/TestModuleClass.h"
+
+static std::unique_ptr<UnityNativeLogger> kUnityNativeLogger;
 
 class Sonority
 {
@@ -23,6 +26,7 @@ private:
 
 extern "C"
 {
+void Internal_SetLogger (DebugCallbackFuncPtr debug_callback);
 Sonority * Internal_CreateSonority ();
 void Internal_DestroySonority (Sonority * sonority);
 void Internal_SonorityPrepare (Sonority * sonority);
