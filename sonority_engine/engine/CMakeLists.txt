@@ -12,9 +12,9 @@ set(LINK_COMMON
 #########################################################
 # SRC
 #########################################################
-set(SOURCES src/Sonority.h src/Sonority.cpp)
+set(SOURCES src/Sonority.h src/Sonority.cpp src/SonorityRTCallback.cpp src/SonorityRTCallback.h src/UnityNativeLogger.h src/UnityNativeLogger.cpp)
 
-add_library(${BINARY} SHARED src/SonorityRTCallback.cpp src/SonorityRTCallback.h)
+add_library(${BINARY})
 target_sources(${BINARY} PRIVATE ${SOURCES})
 
 target_link_libraries(${BINARY}

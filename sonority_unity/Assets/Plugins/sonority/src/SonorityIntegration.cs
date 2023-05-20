@@ -6,6 +6,7 @@ using UnityEngine;
 [PluginAttr("libsonority_engine")]
 public static class SonorityInternal
 {
+    public delegate void SetLoggerDelegate(IntPtr debugCallback);
     public delegate IntPtr CreateSonorityDelegate();
     public delegate void DestroySonorityDelegate(IntPtr sonority);
     public delegate void SonorityPrepareDelegate(IntPtr sonority);
@@ -14,7 +15,12 @@ public static class SonorityInternal
     public delegate void SonorityPlayWavFileDelegate(IntPtr sonority);
     public delegate void SonoritySetSphericalCoordinatesDelegate(IntPtr sonority, float azimuth, float elevation);
 
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void SonorityNativeDebugCallbackDelegate(string str);
 
+    [PluginFunctionAttr("Internal_SetLogger")] 
+    public static readonly SetLoggerDelegate SetLogger = null;
+    
     [PluginFunctionAttr("Internal_CreateSonority")] 
     public static readonly CreateSonorityDelegate CreateSonority = null;
     
@@ -43,6 +49,10 @@ public class SonorityEngine
     
     public SonorityEngine()
     {
+        SonorityInternal.SonorityNativeDebugCallbackDelegate debugCallbackDelegate = new SonorityInternal.SonorityNativeDebugCallbackDelegate(SonorityNativeDebugCallback);
+        IntPtr callbackFuncPtr = 
+            Marshal.GetFunctionPointerForDelegate(debugCallbackDelegate);
+        SonorityInternal.SetLogger(callbackFuncPtr);
         _sonorityEngine = SonorityInternal.CreateSonority();
     }
 
@@ -74,6 +84,11 @@ public class SonorityEngine
     public void SetSphericalCoordinates(float azimuth, float elevation)
     {
         SonorityInternal.SonoritySetSphericalCoordinates(_sonorityEngine, azimuth, elevation);
+    }
+    
+    private static void SonorityNativeDebugCallback(string str)
+    {
+        Debug.Log("::Sonority Native:: " + str);
     }
 };
 

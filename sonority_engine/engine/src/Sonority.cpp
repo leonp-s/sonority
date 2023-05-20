@@ -14,14 +14,23 @@ void Sonority::Prepare ()
 void Sonority::Release ()
 {
     audio_device_manager_.closeAudioDevice ();
+    juce::Logger::setCurrentLogger (nullptr);
 }
 
 extern "C"
 {
+void Internal_SetLogger (DebugCallbackFuncPtr debug_callback)
+{
+    juce::Logger::setCurrentLogger (nullptr);
+    kUnityNativeLogger = std::make_unique<UnityNativeLogger> (debug_callback);
+    juce::Logger::setCurrentLogger (kUnityNativeLogger.get ());
+}
+
 Sonority * Internal_CreateSonority ()
 {
     return new Sonority ();
 }
+
 void Sonority::PlayWavFile ()
 {
     sonority_rt_callback_.ScheduleFile ();
