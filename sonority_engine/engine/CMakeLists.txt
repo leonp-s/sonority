@@ -7,7 +7,6 @@ set(LINK_JUCE
 
 set(LINK_COMMON
         audio_engine
-        sonority_test_module
         sofa_renderer)
 
 #########################################################

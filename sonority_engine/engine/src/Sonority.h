@@ -2,7 +2,6 @@
 #include "SonorityRTCallback.h"
 #include "UnityNativeLogger.h"
 #include "juce_audio_devices/juce_audio_devices.h"
-#include "sonority_test_module/TestModuleClass.h"
 
 static std::unique_ptr<UnityNativeLogger> kUnityNativeLogger;
 
