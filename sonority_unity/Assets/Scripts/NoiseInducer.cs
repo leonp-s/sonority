@@ -43,6 +43,6 @@ public class NoiseInducer : MonoBehaviour
 
     private void UpdateSphericalCoordinates()
     {
-        SonorityIntegration.SetSphericalCoordinates(AzimuthSlider.value * 180, ElevationSlider.value * 180);
+        SonorityIntegration.SetSphericalCoordinates(AzimuthSlider.value * -180, ElevationSlider.value * 90);
     }
 }

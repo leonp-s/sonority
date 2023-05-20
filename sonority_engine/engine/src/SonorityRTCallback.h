@@ -24,14 +24,14 @@ public:
 
     void ScheduleFile ();
 
-    void UpdateFilters(float azimuth, float elevation);
+    void UpdateFilters (float azimuth, float elevation);
 
     std::atomic<bool> is_playing_noise_ = false;
 
 private:
     SofaFilter sofa_filter_ {SofaFilter::OpenOptions {
         .hrtf_path = std::filesystem::path (
-            "/Users/micahstrange/sonority/sonority_engine/MIT_KEMAR_normal_pinna.sofa"),
+            "/Users/LeonPS/Documents/Development/sonority/sonority_engine/MIT_KEMAR_normal_pinna.sofa"),
         .sample_rate = 48000,
     }};
     SofaRenderer sofa_renderer_;

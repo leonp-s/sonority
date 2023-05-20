@@ -6,20 +6,11 @@ SonorityRTCallback::SonorityRTCallback ()
     audioFormatManager.registerBasicFormats ();
 
     std::unique_ptr<juce::AudioFormatReader> reader (audioFormatManager.createReaderFor (
-        juce::File ("/Users/micahstrange/sonority/sonority_engine/vocdemo.wav")));
+        juce::File ("/Users/LeonPS/Documents/Development/sonority/sonority_engine/vocdemo.wav")));
     fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
     reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
 
-    juce::AudioBuffer<float> hrir_buffer {2, sofa_filter_.GetFilterLength ()};
-    float left_delay;
-    float right_delay;
-    sofa_filter_.GetFilterForSphericalCoordinates (
-        juce::dsp::AudioBlock<float> {hrir_buffer},
-        left_delay,
-        right_delay,
-        {.azimuth_degrees = 160.f, .elevation_degrees = 45.f});
-
-    sofa_renderer_.SetFilter (hrir_buffer, left_delay, right_delay, 48000);
+    UpdateFilters (0.f, 0.f);
 }
 void SonorityRTCallback::audioDeviceIOCallbackWithContext (
     const float ** inputChannelData,
@@ -87,10 +78,8 @@ void SonorityRTCallback::UpdateFilters (float azimuth, float elevation)
     juce::AudioBuffer<float> hrir_buffer {2, sofa_filter_.GetFilterLength ()};
     float left_delay;
     float right_delay;
-    sofa_filter_.GetFilterForCartesian (juce::dsp::AudioBlock<float> {hrir_buffer},
-                                        left_delay,
-                                        right_delay,
-                                        { azimuth, elevation});
+    sofa_filter_.GetFilterForSphericalCoordinates (
+        juce::dsp::AudioBlock<float> {hrir_buffer}, left_delay, right_delay, {azimuth, elevation});
 
     sofa_renderer_.SetFilter (hrir_buffer, left_delay, right_delay, 48000);
 }

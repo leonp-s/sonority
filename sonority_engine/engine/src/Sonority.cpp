@@ -57,7 +57,7 @@ void Internal_SonorityPlayWavFile (Sonority * sonority)
     sonority->PlayWavFile ();
 }
 
-void Internal_SetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation)
+void Internal_SonoritySetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation)
 {
     sonority->UpdateSphericalCoordinates (azimuth, elevation);
 }

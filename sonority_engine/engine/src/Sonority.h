@@ -29,5 +29,5 @@ void Internal_SonorityPrepare (Sonority * sonority);
 void Internal_SonorityRelease (Sonority * sonority);
 void Internal_SonoritySetPlayingNoise (Sonority * sonority, bool is_playing_noise);
 void Internal_SonorityPlayWavFile (Sonority * sonority);
-void Internal_SetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation);
+void Internal_SonoritySetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation);
 }
