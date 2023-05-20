@@ -33,7 +33,7 @@ set(BUILD_TESTS false)
 add_subdirectory(${libmysofa_SOURCE_DIR})
 include_directories(${libmysofa_SOURCE_DIR}/src)
 
-add_library(common INTERFACE)
+add_library(common INTERFACE modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.cpp modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.h)
 target_link_libraries(common INTERFACE mysofa-static)
 link_libraries(common)
 

@@ -32,8 +32,13 @@ void SofaRenderer::SetFilter (juce::dsp::AudioBlock<float> hrir,
     delay_lines_ [kRightChannel].setDelay (right_delay_samples);
 }
 
-void SofaRenderer::process (const juce::dsp::ProcessContextReplacing<float> & replacing)
+void SofaRenderer::process (const juce::dsp::ProcessContextNonReplacing<float> & processContext)
 {
+    jassert (processContext.getInputBlock().getNumChannels() == 1);
+    jassert (processContext.getOutputBlock().getNumChannels()==2);
+
+
+
     buffer_transfer_.get (
         [&] (BufferWithSampleRate & transfer_buffer)
         {
@@ -44,9 +49,9 @@ void SofaRenderer::process (const juce::dsp::ProcessContextReplacing<float> & re
                                             juce::dsp::Convolution::Normalise::no);
         });
 
-    convolver_.process (replacing);
+    convolver_.process (processContext);
 
-    auto output_block = replacing.getOutputBlock ();
+    auto output_block = processContext.getOutputBlock ();
     auto left_block = output_block.getSingleChannelBlock (kLeftChannel);
     auto right_block = output_block.getSingleChannelBlock (kRightChannel);
 

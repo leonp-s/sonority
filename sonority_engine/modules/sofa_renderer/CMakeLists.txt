@@ -5,5 +5,7 @@ sonority_add_module(
         src/sofa_renderer/SofaRenderer.h
         src/sofa_renderer/SofaRenderer.cpp
         src/sofa_renderer/BufferTransfer.h
+        src/sofa_renderer/SofaDodecRenderer.h
+        src/sofa_renderer/SofaDodecRenderer.cpp
         DEPS juce::juce_core juce::juce_dsp
 )

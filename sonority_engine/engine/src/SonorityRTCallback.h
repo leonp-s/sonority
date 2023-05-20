@@ -3,8 +3,8 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include <juce_core/juce_core.h>
 #include <juce_dsp/juce_dsp.h>
+#include <sofa_renderer/SofaDodecRenderer.h>
 #include <sofa_renderer/SofaFilter.h>
-#include <sofa_renderer/SofaRenderer.h>
 
 class SonorityRTCallback : public juce::AudioIODeviceCallback
 {
@@ -31,10 +31,11 @@ public:
 private:
     SofaFilter sofa_filter_ {SofaFilter::OpenOptions {
         .hrtf_path = std::filesystem::path (
-            "/Users/LeonPS/Documents/Development/sonority/sonority_engine/MIT_KEMAR_normal_pinna.sofa"),
+            "/Users/micahstrange/sonority/sonority_engine/RIEC_hrir_subject_001.sofa"),
         .sample_rate = 48000,
     }};
-    SofaRenderer sofa_renderer_;
+
+    SofaDodecRenderer sofa_dodec_renderer_;
 
     juce::AudioBuffer<float> fileBuffer_;
     std::vector<int> schedule_;

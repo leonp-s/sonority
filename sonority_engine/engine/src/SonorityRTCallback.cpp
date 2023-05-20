@@ -6,7 +6,7 @@ SonorityRTCallback::SonorityRTCallback ()
     audioFormatManager.registerBasicFormats ();
 
     std::unique_ptr<juce::AudioFormatReader> reader (audioFormatManager.createReaderFor (
-        juce::File ("/Users/LeonPS/Documents/Development/sonority/sonority_engine/vocdemo.wav")));
+        juce::File ("/Users/micahstrange/sonority/sonority_engine/vocdemo.wav")));
     fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
     reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
 
@@ -47,8 +47,8 @@ void SonorityRTCallback::audioDeviceIOCallbackWithContext (
     juce::dsp::AudioBlock<float> process_buffer {outputChannelData,
                                                  static_cast<size_t> (numOutputChannels),
                                                  static_cast<size_t> (numSamples)};
-    juce::dsp::ProcessContextReplacing<float> process_context {process_buffer};
-    sofa_renderer_.process (process_context);
+    juce::dsp::ProcessContextNonReplacing<float> process_context { ,process_buffer};
+    sofa_dodec_renderer_.process (process_context);
 
     std::erase_if (schedule_,
                    [&] (int player) { return player > fileBuffer_.getNumSamples () - numSamples; });
@@ -56,7 +56,7 @@ void SonorityRTCallback::audioDeviceIOCallbackWithContext (
 
 void SonorityRTCallback::audioDeviceAboutToStart (juce::AudioIODevice * device)
 {
-    sofa_renderer_.prepare (juce::dsp::ProcessSpec {
+    sofa_dodec_renderer_.prepare (juce::dsp::ProcessSpec {
         .sampleRate = device->getCurrentSampleRate (),
         .maximumBlockSize = static_cast<juce::uint32> (device->getDefaultBufferSize ()),
         .numChannels =
@@ -65,7 +65,7 @@ void SonorityRTCallback::audioDeviceAboutToStart (juce::AudioIODevice * device)
 
 void SonorityRTCallback::audioDeviceStopped ()
 {
-    sofa_renderer_.reset ();
+    sofa_dodec_renderer_.reset ();
 }
 
 void SonorityRTCallback::ScheduleFile ()
