@@ -6,10 +6,9 @@ SonorityRTCallback::SonorityRTCallback ()
     audioFormatManager.registerBasicFormats ();
 
     std::unique_ptr<juce::AudioFormatReader> reader (audioFormatManager.createReaderFor (
-        juce::File ("/Users/micahstrange/sonority/sonority_engine/vocdemo.wav")));
+        juce::File ("/Users/micahstrange/sonority/sonority_engine/2ndorderAmbisonicClock.wav")));
     fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
     reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
-
     UpdateFilters (0.f, 0.f);
 }
 void SonorityRTCallback::audioDeviceIOCallbackWithContext (
@@ -35,28 +34,19 @@ void SonorityRTCallback::audioDeviceIOCallbackWithContext (
         }
     }
 
-    //    for (auto channelIndex = 0; channelIndex < numOutputChannels; channelIndex++)
-    //    {
-    //        auto * channel = outputChannelData [channelIndex];
-    //        for (auto sampleIndex = 0; sampleIndex < numSamples; sampleIndex++)
-    //        {
-    //            auto randomSample = random.nextFloat ();
-    //            channel [sampleIndex] = is_playing_noise_ ? randomSample : 0.f;
-    //        }
-    //    }
+    for (auto & player : schedule_)
+    {
+        for (auto channel_index = 0; channel_index < ambisonic_process_block.getNumChannels ();
+             channel_index++)
+        {
+            auto file_channel = fileBuffer_.getReadPointer (channel_index);
+            auto channel_block = ambisonic_process_block.getChannelPointer (channel_index);
 
-    //    for (auto & player : schedule_)
-    //    {
-    //        for (auto channelIndex = 0; channelIndex < numOutputChannels; channelIndex++)
-    //        {
-    //            auto fileChannel = fileBuffer_.getReadPointer (channelIndex);
-    //            auto * channel = outputChannelData [channelIndex];
-    //
-    //            for (auto sampleIndex = 0; sampleIndex < numSamples; sampleIndex++)
-    //                channel [sampleIndex] += fileChannel [player + sampleIndex];
-    //        }
-    //        player += numSamples;
-    //    }
+            for (auto sampleIndex = 0; sampleIndex < numSamples; sampleIndex++)
+                channel_block [sampleIndex] += file_channel [player + sampleIndex];
+        }
+        player += numSamples;
+    }
 
     juce::dsp::AudioBlock<float> process_block {outputChannelData,
                                                 static_cast<size_t> (numOutputChannels),
