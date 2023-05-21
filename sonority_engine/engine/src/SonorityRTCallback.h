@@ -29,14 +29,9 @@ public:
     std::atomic<bool> is_playing_noise_ = false;
 
 private:
-    SofaFilter sofa_filter_ {SofaFilter::OpenOptions {
-        .hrtf_path = std::filesystem::path (
-            "/Users/micahstrange/sonority/sonority_engine/RIEC_hrir_subject_001.sofa"),
-        .sample_rate = 48000,
-    }};
-
     SofaDodecRenderer sofa_dodec_renderer_;
 
+    juce::AudioBuffer<float> ambisonic_buffer_;
     juce::AudioBuffer<float> fileBuffer_;
     std::vector<int> schedule_;
 };

@@ -18,15 +18,17 @@ private:
     float sample_rate_;
 
     std::array<SofaRenderer, 12> sofa_renderers_;
-    SofaFilter sofa_filter_;
-
+    SofaFilter sofa_filter_ {SofaFilter::OpenOptions {
+        .hrtf_path = std::filesystem::path (
+            "/Users/micahstrange/sonority/sonority_engine/RIEC_hrir_subject_001.sofa"),
+        .sample_rate = 48000,
+    }};
     std::array<juce::AudioBuffer<float>, 12> hrir_buffers_;
     std::array<float, 12> left_delays_;
     std::array<float, 12> right_delays_;
 
     juce::AudioBuffer<float> renderer_input_buffer_;
     juce::AudioBuffer<float> renderer_output_buffer_;
-
 
     static constexpr std::array<SofaFilter::SphericalCoordinates, 12> kSphericalCoordinates {
         SofaFilter::SphericalCoordinates {.azimuth_degrees = 180.f, .elevation_degrees = 63.f},

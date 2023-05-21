@@ -65,6 +65,7 @@ void SofaDodecRenderer::process (
         output_block.add (renderer_output_block);
     }
 }
+
 void SofaDodecRenderer::reset ()
 {
     for (auto & sofa_renderer : sofa_renderers_)
