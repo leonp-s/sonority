@@ -10,16 +10,14 @@ struct Vector3
 
 struct WorldSpaceNodeData
 {
-    bool is_looping_;
     float volume_;
-    Vector3 coordinates_;
     juce::dsp::AudioBlock<const float> audio_block_;
 };
 
-class WorldSpaceNode, juce::dsp::ProcessorBase
+class WorldSpaceNode : public juce::dsp::ProcessorBase
 {
 public:
-    WorldSpaceNode (WorldSpaceNodeData world_space_node_data);
+    explicit WorldSpaceNode (WorldSpaceNodeData world_space_node_data);
     ~WorldSpaceNode () override = default;
 
     void UpdateNodeData (WorldSpaceNodeData world_space_node_data);
@@ -29,9 +27,6 @@ public:
     void reset () override;
 
 private:
-    void WriteOneShot (juce::dsp::AudioBlock<float> output_block);
-    void WriteLooping (juce::dsp::AudioBlock<float> output_block);
-
     WorldSpaceNodeData world_space_node_data_;
     int read_position_ = 0;
 };

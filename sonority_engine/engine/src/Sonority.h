@@ -14,9 +14,6 @@ public:
 
     void Prepare ();
     void Release ();
-
-    void SetPlayingNoise (bool is_playing_noise);
-    void PlayWavFile ();
     void UpdateSphericalCoordinates (float azimuth, float elevation);
 
 private:
