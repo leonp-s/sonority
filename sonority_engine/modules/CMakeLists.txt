@@ -1,2 +1,3 @@
 add_subdirectory(sonority_test_module)
 add_subdirectory(sofa_renderer)
+add_subdirectory(audio_graph)
