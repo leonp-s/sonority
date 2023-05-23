@@ -12,6 +12,21 @@ void Sonority::Release ()
     juce::Logger::setCurrentLogger (nullptr);
 }
 
+juce::Uuid Sonority::RequestCreateSource ()
+{
+    return audio_engine_.RequestCreateSource ();
+}
+
+void Sonority::DeleteSource (juce::Uuid source)
+{
+    audio_engine_.DeleteSource (source);
+}
+
+void Sonority::SourceDidUpdate (juce::Uuid source, VirtualSourceData source_data)
+{
+    audio_engine_.SourceDidUpdate (source, source_data);
+}
+
 extern "C"
 {
 void Internal_SetLogger (DebugCallbackFuncPtr debug_callback)
@@ -26,17 +41,9 @@ Sonority * Internal_CreateSonority ()
     return new Sonority ();
 }
 
-void Sonority::UpdateSphericalCoordinates (float azimuth, float elevation)
-{
-}
-
 void Internal_DestroySonority (Sonority * sonority)
 {
     delete sonority;
-}
-
-void Internal_SonoritySetPlayingNoise (Sonority * sonority, bool is_playing_noise)
-{
 }
 
 void Internal_SonorityPrepare (Sonority * sonority)
@@ -48,13 +55,28 @@ void Internal_SonorityRelease (Sonority * sonority)
 {
     sonority->Release ();
 }
-
-void Internal_SonorityPlayWavFile (Sonority * sonority)
-{
 }
 
-void Internal_SonoritySetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation)
+void Internal_RequestCreateSource (Sonority * sonority, char * source)
 {
-    sonority->UpdateSphericalCoordinates (azimuth, elevation);
+    auto uuid = sonority->RequestCreateSource ();
+    strcpy (source, uuid.toString ().toRawUTF8 ());
 }
+
+void Internal_DeleteSource (Sonority * sonority, const char * source)
+{
+    auto source_uuid = juce::Uuid (source);
+    sonority->DeleteSource (source_uuid);
+}
+
+void Internal_SourceDidUpdate (Sonority * sonority,
+                               const char * source,
+                               bool is_playing,
+                               float volume,
+                               const char * file_path)
+{
+    auto source_uuid = juce::Uuid (source);
+    sonority->SourceDidUpdate (
+        source_uuid,
+        VirtualSourceData {.is_playing = is_playing, .volume = volume, .file_path = file_path});
 }

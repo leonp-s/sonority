@@ -1,5 +1,10 @@
 #include "SonorityRTCallback.h"
 
+SonorityRTCallback::SonorityRTCallback (AudioGraph & audio_graph)
+    : audio_graph_ (audio_graph)
+{
+}
+
 void SonorityRTCallback::audioDeviceIOCallbackWithContext (
     const float ** inputChannelData,
     int numInputChannels,

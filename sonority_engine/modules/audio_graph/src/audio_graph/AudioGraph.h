@@ -22,9 +22,7 @@ private:
     SofaDodecRenderer sofa_dodec_renderer_;
 
     std::unordered_map<juce::Uuid, AudioBlockPlayerData> looping_data_;
-    AudioBlockPlayer audio_block_player_;
 
     juce::AudioBuffer<float> ambisonic_buffer_;
-    juce::AudioBuffer<float> fileBuffer_;
     std::vector<int> schedule_;
 };

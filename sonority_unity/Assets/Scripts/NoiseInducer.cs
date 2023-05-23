@@ -21,13 +21,13 @@ public class NoiseInducer : MonoBehaviour
         PlayNoiseButton.onClick.AddListener(() =>
         {
             isNoisePlaying = !isNoisePlaying;
-            SonorityIntegration.SetPlayingNoise(isNoisePlaying);
+            //SonorityIntegration.SetPlayingNoise(isNoisePlaying);
         });
         
         PlayWavFileButton.onClick.AddListener(() =>
         {
 
-           SonorityIntegration.PlayWavFile();
+           //SonorityIntegration.PlayWavFile();
         });
         
         AzimuthSlider.onValueChanged.AddListener((float value) =>
@@ -43,6 +43,6 @@ public class NoiseInducer : MonoBehaviour
 
     private void UpdateSphericalCoordinates()
     {
-        SonorityIntegration.SetSphericalCoordinates(AzimuthSlider.value * -180, ElevationSlider.value * 90);
+        //SonorityIntegration.SetSphericalCoordinates(AzimuthSlider.value * -180, ElevationSlider.value * 90);
     }
 }
