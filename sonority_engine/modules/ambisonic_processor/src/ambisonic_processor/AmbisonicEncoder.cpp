@@ -25,7 +25,8 @@ void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & p
     static constexpr float kDistanceRolloff = 0.28f;
     float distance = spherical_coordinates [2];
     float distance_gain = 1.f / std::exp (std::abs (distance * kDistanceRolloff));
-    juce::Logger::writeToLog (juce::String ("Distance Gain: ") + juce::String (distance_gain));
+    //    juce::Logger::writeToLog (juce::String ("Distance Gain: ") + juce::String
+    //    (distance_gain));
 
     auto second_order_table = BuildSecondOrderTable (azimuth_rad, elevation_rad);
 
