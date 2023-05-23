@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/SonorityRTCallback.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_engine/src/audio_engine/AudioEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_engine/src/audio_engine/AudioEngine.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioBlockPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioBlockPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioBlockPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioBlockPlayer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,10 +124,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8416">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12991">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="8416" />
+      <option name="pid" value="12991" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -163,7 +154,7 @@
       <workItem from="1684254421088" duration="7045000" />
       <workItem from="1684336442308" duration="3242000" />
       <workItem from="1684418731133" duration="2041000" />
-      <workItem from="1684843753581" duration="5240000" />
+      <workItem from="1684843753581" duration="7412000" />
     </task>
     <servers />
   </component>

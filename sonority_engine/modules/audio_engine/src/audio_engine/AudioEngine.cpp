@@ -19,6 +19,9 @@ void VirtualSource::SourceDidUpdate (VirtualSourceData virtual_source_data)
             audio_graph_.RemoveLoopingPlayer (source_);
     }
 
+    if (virtual_source_data.is_playing)
+        audio_graph_.UpdateLoopingPlayer (source_, virtual_source_data.volume);
+
     virtual_source_data_ = virtual_source_data;
 }
 

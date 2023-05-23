@@ -17,6 +17,9 @@ void AudioGraph::RemoveLoopingPlayer (juce::Uuid uuid)
 
 void AudioGraph::UpdateLoopingPlayer (juce::Uuid uuid, float volume)
 {
+    if (! looping_data_.contains (uuid))
+        return;
+
     looping_data_ [uuid].volume = volume;
 }
 

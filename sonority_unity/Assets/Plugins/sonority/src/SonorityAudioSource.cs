@@ -12,6 +12,8 @@ public class SonorityAudioSource : MonoBehaviour
     
     public string AudioFileName;
     public bool IsPlaying = true;
+    
+    [Range(0,1)]
     public float Volume = 1.0f;
 
     public float UpdateInterval = 0.2f;
@@ -46,5 +48,14 @@ public class SonorityAudioSource : MonoBehaviour
                 _sonorityIntegration.SourceDidUpdate(this);
             }
         }
+    }
+
+    public Vector3 GetCartesianRelativeToListener(Transform listenerTransform)
+    {
+        var diff = transform.position - listenerTransform.position;
+        Debug.Log("Diff: " + diff);
+        diff = listenerTransform.rotation * diff;
+        Debug.Log("Rotated: " + diff);
+        return diff;
     }
 }

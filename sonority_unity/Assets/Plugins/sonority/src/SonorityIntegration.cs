@@ -104,6 +104,7 @@ public class SonorityIntegration : MonoBehaviour
     private SonorityEngine _sonorityEngine;
     
     public event OnIntegrationLoadedDelegate OnIntegrationLoaded;
+    public Transform ListenerTransform;
 
     void Start()
     {
@@ -127,7 +128,8 @@ public class SonorityIntegration : MonoBehaviour
     }
 
     public void SourceDidUpdate(SonorityAudioSource sonorityAudioSource)
-    { 
+    {
+        Vector3 cartesian = sonorityAudioSource.GetCartesianRelativeToListener(ListenerTransform);
         _sonorityEngine.SourceDidUpdate(sonorityAudioSource.SourceId, sonorityAudioSource.IsPlaying, sonorityAudioSource.Volume, sonorityAudioSource.GetAudioFilePath());
     }
 }

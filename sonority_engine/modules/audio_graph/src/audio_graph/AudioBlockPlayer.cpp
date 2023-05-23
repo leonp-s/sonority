@@ -27,5 +27,6 @@ void AudioBlockPlayer::Process (const juce::dsp::ProcessContextReplacing<float> 
             .copyFrom (overflowing_block);
     }
 
+    output_block.multiplyBy (audio_block_player_data.volume);
     read_position = (read_position + output_block_length) % audio_block_length;
 }
