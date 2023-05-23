@@ -8,7 +8,8 @@ set(LINK_JUCE
 set(LINK_COMMON
         sonority_test_module
         sofa_renderer
-        audio_graph)
+        audio_graph
+        audio_engine)
 
 #########################################################
 # SRC

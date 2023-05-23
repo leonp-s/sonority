@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 using fts;
 using UnityEngine;
 
@@ -11,10 +13,11 @@ public static class SonorityInternal
     public delegate void DestroySonorityDelegate(IntPtr sonority);
     public delegate void SonorityPrepareDelegate(IntPtr sonority);
     public delegate void SonorityReleaseDelegate(IntPtr sonority);
-    public delegate void SonoritySetPlayingNoiseDelegate(IntPtr sonority, bool isPlayingNoise);
-    public delegate void SonorityPlayWavFileDelegate(IntPtr sonority);
-    public delegate void SonoritySetSphericalCoordinatesDelegate(IntPtr sonority, float azimuth, float elevation);
-
+    public delegate void SonorityRequestCreateSourceDelegate(IntPtr sonority, StringBuilder sourceBuilder);
+    public delegate void SonorityDeleteSourceDelegate(IntPtr sonority, string source);
+    public delegate void SonoritySourceDidUpdateDelegate(IntPtr sonority, string source, bool isPlaying, float volume, string filePath);
+    
+    
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void SonorityNativeDebugCallbackDelegate(string str);
 
@@ -33,14 +36,14 @@ public static class SonorityInternal
     [PluginFunctionAttr("Internal_SonorityRelease")] 
     public static readonly SonorityReleaseDelegate SonorityRelease = null;
     
-    [PluginFunctionAttr("Internal_SonoritySetPlayingNoise")] 
-    public static readonly SonoritySetPlayingNoiseDelegate SonoritySetPlayingNoise = null;
-
-    [PluginFunctionAttr("Internal_SonorityPlayWavFile")]
-    public static readonly SonorityPlayWavFileDelegate SonorityPlayWavFile = null;
+    [PluginFunctionAttr("Internal_RequestCreateSource")] 
+    public static readonly SonorityRequestCreateSourceDelegate SonorityRequestCreateSource = null;
     
-    [PluginFunctionAttr("Internal_SonoritySetSphericalCoordinates")]
-    public static readonly SonoritySetSphericalCoordinatesDelegate SonoritySetSphericalCoordinates = null;
+    [PluginFunctionAttr("Internal_DeleteSource")] 
+    public static readonly SonorityDeleteSourceDelegate SonorityDeleteSource = null;
+
+    [PluginFunctionAttr("Internal_SourceDidUpdate")] 
+    public static readonly SonoritySourceDidUpdateDelegate SonoritySourceDidUpdate = null;
 }
 
 public class SonorityEngine
@@ -60,6 +63,11 @@ public class SonorityEngine
     {
         SonorityInternal.DestroySonority(_sonorityEngine);
     }
+    
+    private static void SonorityNativeDebugCallback(string str)
+    {
+        Debug.Log("::Sonority Native:: " + str);
+    }
 
     public void Prepare()
     {
@@ -71,36 +79,42 @@ public class SonorityEngine
         SonorityInternal.SonorityRelease(_sonorityEngine);
     }
 
-    public void SetPlayingNoise(bool isPlayingNoise)
+    public string RequestCreateSource()
     {
-        SonorityInternal.SonoritySetPlayingNoise(_sonorityEngine, isPlayingNoise);
+        StringBuilder sourceBuilder = new StringBuilder(100);
+        SonorityInternal.SonorityRequestCreateSource(_sonorityEngine, sourceBuilder);
+        return sourceBuilder.ToString();
     }
 
-    public void PlayWavFile()
+    public void DeleteSource(string source)
     {
-        SonorityInternal.SonorityPlayWavFile(_sonorityEngine);
+        SonorityInternal.SonorityDeleteSource(_sonorityEngine, source);
     }
 
-    public void SetSphericalCoordinates(float azimuth, float elevation)
+    public void SourceDidUpdate(string source, bool isPlaying, float volume, string filePath)
     {
-        SonorityInternal.SonoritySetSphericalCoordinates(_sonorityEngine, azimuth, elevation);
-    }
-    
-    private static void SonorityNativeDebugCallback(string str)
-    {
-        Debug.Log("::Sonority Native:: " + str);
+        SonorityInternal.SonoritySourceDidUpdate(_sonorityEngine, source, isPlaying, volume, filePath);
     }
 };
+
+public delegate void OnIntegrationLoadedDelegate();
 
 public class SonorityIntegration : MonoBehaviour
 {
     private SonorityEngine _sonorityEngine;
+    
+    public event OnIntegrationLoadedDelegate OnIntegrationLoaded;
+    public Transform ListenerTransform;
 
     void Start()
     {
         _sonorityEngine = new SonorityEngine();
         _sonorityEngine.Prepare();
 
+        OnIntegrationLoaded?.Invoke();
+
+        //var source = _sonorityEngine.RequestCreateSource();
+        //_sonorityEngine.SourceDidUpdate(source, true, 1.0f, "/Users/LeonPS/Documents/Development/sonority/sonority_engine/vocdemo.wav");
     }
 
     void OnDestroy()
@@ -108,19 +122,14 @@ public class SonorityIntegration : MonoBehaviour
         _sonorityEngine.Release();
     }
 
-    
-    public void SetPlayingNoise(bool isNoisePlaying)
+    public string RegisterSource()
     {
-        _sonorityEngine.SetPlayingNoise(isNoisePlaying);
+        return _sonorityEngine.RequestCreateSource();
     }
 
-    public void PlayWavFile()
+    public void SourceDidUpdate(SonorityAudioSource sonorityAudioSource)
     {
-        _sonorityEngine.PlayWavFile();
-    }
-
-    public void SetSphericalCoordinates(float azimuth, float elevation)
-    {
-        _sonorityEngine.SetSphericalCoordinates(azimuth, elevation);
+        Vector3 cartesian = sonorityAudioSource.GetCartesianRelativeToListener(ListenerTransform);
+        _sonorityEngine.SourceDidUpdate(sonorityAudioSource.SourceId, sonorityAudioSource.IsPlaying, sonorityAudioSource.Volume, sonorityAudioSource.GetAudioFilePath());
     }
 }

@@ -3,16 +3,15 @@
 
 struct AudioBlockPlayerData
 {
-    const juce::dsp::AudioBlock<const float> audio_block_;
-    int read_position_ = 0;
+    juce::dsp::AudioBlock<const float> audio_block;
+    int read_position = 0;
+    float volume;
 };
 
 class AudioBlockPlayer
 {
 public:
     explicit AudioBlockPlayer () = default;
-    void prepare (const juce::dsp::ProcessSpec & spec);
-    void process (const juce::dsp::ProcessContextReplacing<float> & replacing,
-                  AudioBlockPlayerData & audio_block_player_data);
-    void reset ();
+    static void Process (const juce::dsp::ProcessContextReplacing<float> & replacing,
+                         AudioBlockPlayerData & audio_block_player_data);
 };

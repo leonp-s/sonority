@@ -2,36 +2,25 @@
 
 AudioGraph::AudioGraph ()
 {
-    juce::AudioFormatManager audioFormatManager;
-    audioFormatManager.registerBasicFormats ();
-
-    std::unique_ptr<juce::AudioFormatReader> reader (audioFormatManager.createReaderFor (
-        juce::File ("/Users/LeonPS/Documents/Development/sonority/sonority_engine/vocdemo.wav")));
-    fileBuffer_.setSize (reader->numChannels, reader->lengthInSamples);
-    reader->read (&fileBuffer_, 0, reader->lengthInSamples, 0, true, true);
-    //
-    //    world_space_node_ = std::make_unique<WorldSpaceNode> (
-    //        WorldSpaceNodeData {.volume_ = 1.f,
-    //                            .is_looping_ = true,
-    //                            .coordinates_ = Vector3 {.x = 1.f, .y = 2.f, .z = 3.f},
-    //                            .audio_block_ = juce::dsp::AudioBlock<float> (fileBuffer_)});
-
     looping_data_.reserve (1000);
-
-    AddLoopingPlayer (juce::Uuid (), juce::dsp::AudioBlock<float> (fileBuffer_));
 }
 
 void AudioGraph::AddLoopingPlayer (juce::Uuid uuid, juce::dsp::AudioBlock<float> audio_block)
 {
-    looping_data_.insert ({uuid, AudioBlockPlayerData {.audio_block_ = audio_block}});
+    looping_data_.insert ({uuid, AudioBlockPlayerData {.audio_block = audio_block}});
 }
 
 void AudioGraph::RemoveLoopingPlayer (juce::Uuid uuid)
 {
+    looping_data_.erase (uuid);
 }
 
 void AudioGraph::UpdateLoopingPlayer (juce::Uuid uuid, float volume)
 {
+    if (! looping_data_.contains (uuid))
+        return;
+
+    looping_data_ [uuid].volume = volume;
 }
 
 void AudioGraph::prepare (const juce::dsp::ProcessSpec & spec)
@@ -56,7 +45,7 @@ void AudioGraph::process (const juce::dsp::ProcessContextReplacing<float> & repl
     sofa_dodec_renderer_.process (process_context);
 
     for (auto & audio_block_player_data : looping_data_)
-        audio_block_player_.process (replacing, audio_block_player_data.second);
+        AudioBlockPlayer::Process (replacing, audio_block_player_data.second);
 }
 
 void AudioGraph::reset ()

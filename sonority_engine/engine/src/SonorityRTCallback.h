@@ -10,7 +10,7 @@
 class SonorityRTCallback : public juce::AudioIODeviceCallback
 {
 public:
-    SonorityRTCallback () = default;
+    SonorityRTCallback (AudioGraph & audio_graph);
     ~SonorityRTCallback () override = default;
 
     void
@@ -24,5 +24,5 @@ public:
     void audioDeviceStopped () override;
 
 private:
-    AudioGraph audio_graph_;
+    AudioGraph & audio_graph_;
 };

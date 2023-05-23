@@ -1,14 +1,10 @@
 #include "AudioBlockPlayer.h"
 
-void AudioBlockPlayer::prepare (const juce::dsp::ProcessSpec & spec)
-{
-}
-
-void AudioBlockPlayer::process (const juce::dsp::ProcessContextReplacing<float> & replacing,
+void AudioBlockPlayer::Process (const juce::dsp::ProcessContextReplacing<float> & replacing,
                                 AudioBlockPlayerData & audio_block_player_data)
 {
-    auto & read_position = audio_block_player_data.read_position_;
-    auto audio_block = audio_block_player_data.audio_block_;
+    auto & read_position = audio_block_player_data.read_position;
+    auto audio_block = audio_block_player_data.audio_block;
     auto output_block = replacing.getOutputBlock ();
     auto output_block_length = output_block.getNumSamples ();
     auto audio_block_length = audio_block.getNumSamples ();
@@ -31,9 +27,6 @@ void AudioBlockPlayer::process (const juce::dsp::ProcessContextReplacing<float> 
             .copyFrom (overflowing_block);
     }
 
+    output_block.multiplyBy (audio_block_player_data.volume);
     read_position = (read_position + output_block_length) % audio_block_length;
-}
-
-void AudioBlockPlayer::reset ()
-{
 }
