@@ -3,5 +3,5 @@ sonority_add_module(
         SOURCES
         src/ambisonic_processor/AmbisonicEncoder.cpp
         src/ambisonic_processor/AmbisonicEncoder.h
-        DEPS juce::juce_core juce::juce_dsp
+        DEPS juce::juce_core juce::juce_dsp audio_engine
 )
