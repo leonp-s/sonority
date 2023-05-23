@@ -6,11 +6,19 @@
 #include <juce_dsp/juce_dsp.h>
 #include <optional>
 
+struct Vector3
+{
+    float x;
+    float y;
+    float z;
+};
+
 struct VirtualSourceData
 {
     bool is_playing;
     float volume;
     std::string file_path;
+    Vector3 cartesian;
 };
 
 class VirtualSource

@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_engine/src/audio_engine/AudioEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_engine/src/audio_engine/AudioEngine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioBlockPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioBlockPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
@@ -154,7 +151,7 @@
       <workItem from="1684254421088" duration="7045000" />
       <workItem from="1684336442308" duration="3242000" />
       <workItem from="1684418731133" duration="2041000" />
-      <workItem from="1684843753581" duration="7412000" />
+      <workItem from="1684843753581" duration="7979000" />
     </task>
     <servers />
   </component>

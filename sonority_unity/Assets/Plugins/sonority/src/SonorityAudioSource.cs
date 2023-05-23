@@ -53,9 +53,9 @@ public class SonorityAudioSource : MonoBehaviour
     public Vector3 GetCartesianRelativeToListener(Transform listenerTransform)
     {
         var diff = transform.position - listenerTransform.position;
-        Debug.Log("Diff: " + diff);
+        // Debug.Log("Diff: " + diff);
         diff = listenerTransform.rotation * diff;
-        Debug.Log("Rotated: " + diff);
+        // Debug.Log("Rotated: " + diff);
         return diff;
     }
 }
