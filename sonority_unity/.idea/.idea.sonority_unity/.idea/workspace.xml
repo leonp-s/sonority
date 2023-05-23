@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-    </list>
+    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +148,7 @@
       <workItem from="1684254421088" duration="7045000" />
       <workItem from="1684336442308" duration="3242000" />
       <workItem from="1684418731133" duration="2041000" />
-      <workItem from="1684843753581" duration="12102000" />
+      <workItem from="1684843753581" duration="12682000" />
     </task>
     <servers />
   </component>
