@@ -43,5 +43,8 @@ void Internal_SourceDidUpdate (Sonority * sonority,
                                const char * source,
                                bool is_playing,
                                float volume,
-                               const char * file_path);
+                               const char * file_path,
+                               float x,
+                               float y,
+                               float z);
 }

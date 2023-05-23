@@ -73,10 +73,15 @@ void Internal_SourceDidUpdate (Sonority * sonority,
                                const char * source,
                                bool is_playing,
                                float volume,
-                               const char * file_path)
+                               const char * file_path,
+                               float x,
+                               float y,
+                               float z)
 {
     auto source_uuid = juce::Uuid (source);
-    sonority->SourceDidUpdate (
-        source_uuid,
-        VirtualSourceData {.is_playing = is_playing, .volume = volume, .file_path = file_path});
+    sonority->SourceDidUpdate (source_uuid,
+                               VirtualSourceData {.is_playing = is_playing,
+                                                  .volume = volume,
+                                                  .file_path = file_path,
+                                                  .cartesian = Vector3 {.x = x, .y = y, .z = z}});
 }
