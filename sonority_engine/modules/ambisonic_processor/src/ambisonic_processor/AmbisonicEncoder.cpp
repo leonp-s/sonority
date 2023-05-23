@@ -2,6 +2,11 @@
 
 #include <math.h>
 
+static float DegreesToRadians (float degrees) noexcept
+{
+    return (juce::MathConstants<float>::pi / 180.0f) * degrees;
+}
+
 void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & processContext,
                                 Vector3 cartesian)
 {
@@ -10,11 +15,18 @@ void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & p
 
     std::array<float, 3> spherical_coordinates = {cartesian.x, cartesian.y, cartesian.z};
     mysofa_c2s (spherical_coordinates.data ());
-    float azimuth = spherical_coordinates [0];
-    float elevation = spherical_coordinates [1];
-    float distance = spherical_coordinates [2];
 
-    auto second_order_table = BuildSecondOrderTable (azimuth, elevation);
+    float azimuth_degrees = spherical_coordinates [0];
+    float elevation_degrees = spherical_coordinates [1];
+
+    float azimuth_rad = DegreesToRadians (azimuth_degrees);
+    float elevation_rad = DegreesToRadians (elevation_degrees);
+
+    float distance = spherical_coordinates [2];
+    float distance_gain = 1.f / std::exp (std::abs (distance));
+    juce::Logger::writeToLog (juce::String ("Distance Gain: ") + juce::String (distance_gain));
+
+    auto second_order_table = BuildSecondOrderTable (azimuth_rad, elevation_rad);
 
     auto input_block = processContext.getInputBlock ();
     auto output_block = processContext.getOutputBlock ();
@@ -23,12 +35,12 @@ void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & p
          ++output_channel_index)
     {
         auto output_channel_block = output_block.getSingleChannelBlock (output_channel_index);
+        auto channel_gain = second_order_table [CoefficientChannelOrder [output_channel_index]];
         for (auto input_channel_index = 0; input_channel_index < input_block.getNumChannels ();
              ++input_channel_index)
         {
             auto input_channel_block = input_block.getSingleChannelBlock (input_channel_index);
-            output_channel_block.addProductOf (input_channel_block,
-                                               second_order_table [output_channel_index]);
+            output_channel_block.addProductOf (input_channel_block, channel_gain * distance_gain);
         }
     }
 }

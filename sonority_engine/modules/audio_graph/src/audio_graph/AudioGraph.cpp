@@ -49,8 +49,9 @@ void AudioGraph::process (const juce::dsp::ProcessContextReplacing<float> & repl
         ambisonic_encoder_.process (ambisonic_context, audio_block_player_data.second.cartesian);
     }
 
+    output_block.clear ();
     juce::dsp::ProcessContextNonReplacing<float> sofa_context {ambisonic_process_block,
-                                                                  output_block};
+                                                               output_block};
     sofa_dodec_renderer_.process (sofa_context);
 }
 

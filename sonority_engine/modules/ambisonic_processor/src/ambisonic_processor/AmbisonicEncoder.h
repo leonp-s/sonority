@@ -22,5 +22,16 @@ private:
         U,
         V
     };
+
+    std::array<int, 9> CoefficientChannelOrder {Coefficients::W,
+                                                Coefficients::Y,
+                                                Coefficients::Z,
+                                                Coefficients::X,
+                                                Coefficients::V,
+                                                Coefficients::T,
+                                                Coefficients::R,
+                                                Coefficients::S,
+                                                Coefficients::U};
+
     std::array<float, 9> BuildSecondOrderTable (float azimuth, float elevation);
 };
