@@ -6,5 +6,5 @@ sonority_add_module(
         src/audio_graph/AudioBlockPlayer.cpp
         src/audio_graph/AudioGraph.h
         src/audio_graph/AudioGraph.cpp
-        DEPS juce::juce_core juce::juce_dsp sofa_renderer
+        DEPS juce::juce_core juce::juce_dsp sofa_renderer audio_engine ambisonic_processor
 )

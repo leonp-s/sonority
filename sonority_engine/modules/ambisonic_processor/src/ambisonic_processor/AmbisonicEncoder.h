@@ -1,8 +1,9 @@
 #pragma once
-#include "audio_engine/AudioEngine.h"
+#include "audio_engine/Vector3.h"
 
 #include <hrtf/mysofa.h>
 #include <juce_dsp/juce_dsp.h>
+
 class AmbisonicEncoder
 {
 public:

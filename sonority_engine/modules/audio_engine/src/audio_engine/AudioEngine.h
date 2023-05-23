@@ -1,17 +1,11 @@
 #pragma once
 #include "AudioFilePool.h"
+#include "Vector3.h"
 #include "audio_graph/AudioGraph.h"
 
 #include <juce_core/juce_core.h>
 #include <juce_dsp/juce_dsp.h>
 #include <optional>
-
-struct Vector3
-{
-    float x;
-    float y;
-    float z;
-};
 
 struct VirtualSourceData
 {

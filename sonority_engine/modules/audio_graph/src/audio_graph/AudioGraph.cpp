@@ -2,25 +2,28 @@
 
 AudioGraph::AudioGraph ()
 {
-    looping_data_.reserve (1000);
+    world_space_nodes_.reserve (1000);
 }
 
 void AudioGraph::AddLoopingPlayer (juce::Uuid uuid, juce::dsp::AudioBlock<float> audio_block)
 {
-    looping_data_.insert ({uuid, AudioBlockPlayerData {.audio_block = audio_block}});
+    world_space_nodes_.insert (
+        {uuid,
+         WorldSpaceNodeData {.player_data = AudioBlockPlayerData {.audio_block = audio_block}}});
 }
 
 void AudioGraph::RemoveLoopingPlayer (juce::Uuid uuid)
 {
-    looping_data_.erase (uuid);
+    world_space_nodes_.erase (uuid);
 }
 
-void AudioGraph::UpdateLoopingPlayer (juce::Uuid uuid, float volume)
+void AudioGraph::UpdateLoopingPlayer (juce::Uuid uuid, Vector3 cartesian, float volume)
 {
-    if (! looping_data_.contains (uuid))
+    if (! world_space_nodes_.contains (uuid))
         return;
 
-    looping_data_ [uuid].volume = volume;
+    world_space_nodes_ [uuid].cartesian = cartesian;
+    world_space_nodes_ [uuid].player_data.volume = volume;
 }
 
 void AudioGraph::prepare (const juce::dsp::ProcessSpec & spec)
@@ -37,15 +40,18 @@ void AudioGraph::process (const juce::dsp::ProcessContextReplacing<float> & repl
     juce::dsp::AudioBlock<float> ambisonic_process_block {ambisonic_buffer_};
     ambisonic_process_block.clear ();
 
-    //    for (world_space_node in worldspacenodes)
-    //        ambisonic_renderer.RenderWorldNodeBlock(ambisonic_process_block, world_space_node);
+    juce::dsp::ProcessContextNonReplacing<float> ambisonic_context {output_block,
+                                                                    ambisonic_process_block};
 
-    juce::dsp::ProcessContextNonReplacing<float> process_context {ambisonic_process_block,
+    for (auto & audio_block_player_data : world_space_nodes_)
+    {
+        AudioBlockPlayer::Process (replacing, audio_block_player_data.second.player_data);
+        ambisonic_encoder_.process (ambisonic_context, audio_block_player_data.second.cartesian);
+    }
+
+    juce::dsp::ProcessContextNonReplacing<float> sofa_context {ambisonic_process_block,
                                                                   output_block};
-    sofa_dodec_renderer_.process (process_context);
-
-    for (auto & audio_block_player_data : looping_data_)
-        AudioBlockPlayer::Process (replacing, audio_block_player_data.second);
+    sofa_dodec_renderer_.process (sofa_context);
 }
 
 void AudioGraph::reset ()

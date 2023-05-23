@@ -1,17 +1,13 @@
 #pragma once
-#include <juce_dsp/juce_dsp.h>
+#include "../AudioBlockPlayer.h"
+#include "audio_engine/Vector3.h"
 
-struct Vector3
-{
-    float x;
-    float y;
-    float z;
-};
+#include <juce_dsp/juce_dsp.h>
 
 struct WorldSpaceNodeData
 {
-    float volume_;
-    juce::dsp::AudioBlock<const float> audio_block_;
+    Vector3 cartesian;
+    AudioBlockPlayerData player_data;
 };
 
 class WorldSpaceNode : public juce::dsp::ProcessorBase

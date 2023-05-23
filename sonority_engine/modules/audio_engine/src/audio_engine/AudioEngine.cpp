@@ -20,7 +20,8 @@ void VirtualSource::SourceDidUpdate (VirtualSourceData virtual_source_data)
     }
 
     if (virtual_source_data.is_playing)
-        audio_graph_.UpdateLoopingPlayer (source_, virtual_source_data.volume);
+        audio_graph_.UpdateLoopingPlayer (
+            source_, virtual_source_data.cartesian, virtual_source_data.volume);
 
     virtual_source_data_ = virtual_source_data;
 }

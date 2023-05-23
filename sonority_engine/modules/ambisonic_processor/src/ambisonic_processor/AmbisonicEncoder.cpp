@@ -1,4 +1,3 @@
-
 #include "AmbisonicEncoder.h"
 
 #include <math.h>
@@ -20,16 +19,18 @@ void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & p
     auto input_block = processContext.getInputBlock ();
     auto output_block = processContext.getOutputBlock ();
 
-    for (auto output_channel_index = 0; output_channel_index < output_block.getNumChannels(); ++output_channel_index)
+    for (auto output_channel_index = 0; output_channel_index < output_block.getNumChannels ();
+         ++output_channel_index)
     {
         auto output_channel_block = output_block.getSingleChannelBlock (output_channel_index);
-        for (auto input_channel_index = 0; input_channel_index < input_block.getNumChannels(); ++input_channel_index)
+        for (auto input_channel_index = 0; input_channel_index < input_block.getNumChannels ();
+             ++input_channel_index)
         {
             auto input_channel_block = input_block.getSingleChannelBlock (input_channel_index);
-            output_channel_block.addProductOf (input_channel_block, second_order_table[output_channel_index]);
+            output_channel_block.addProductOf (input_channel_block,
+                                               second_order_table [output_channel_index]);
         }
     }
-
 }
 std::array<float, 9> AmbisonicEncoder::BuildSecondOrderTable (float azimuth, float elevation)
 {
