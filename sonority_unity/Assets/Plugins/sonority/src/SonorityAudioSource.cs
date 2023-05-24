@@ -12,13 +12,15 @@ public class SonorityAudioSource : MonoBehaviour
     
     public string AudioFileName;
     public bool IsPlaying = true;
-    
+    public bool IsAmbisonic = false;
     [Range(0,1)]
     public float Volume = 1.0f;
 
     public float UpdateInterval = 0.2f;
     
     private float _elapsedUpdateTime = 0.0f;
+
+    
 
     void Awake()
     {

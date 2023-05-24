@@ -15,7 +15,7 @@ public static class SonorityInternal
     public delegate void SonorityReleaseDelegate(IntPtr sonority);
     public delegate void SonorityRequestCreateSourceDelegate(IntPtr sonority, StringBuilder sourceBuilder);
     public delegate void SonorityDeleteSourceDelegate(IntPtr sonority, string source);
-    public delegate void SonoritySourceDidUpdateDelegate(IntPtr sonority, string source, bool isPlaying, float volume, string filePath, float x, float y, float z);
+    public delegate void SonoritySourceDidUpdateDelegate(IntPtr sonority, string source, bool isPlaying, float volume, string filePath, float x, float y, float z, bool isAmbisonic);
     
     
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -91,9 +91,9 @@ public class SonorityEngine
         SonorityInternal.SonorityDeleteSource(_sonorityEngine, source);
     }
 
-    public void SourceDidUpdate(string source, bool isPlaying, float volume, string filePath, float x, float y, float z)
+    public void SourceDidUpdate(string source, bool isPlaying, float volume, string filePath, float x, float y, float z, bool isAmbisonic)
     {
-        SonorityInternal.SonoritySourceDidUpdate(_sonorityEngine, source, isPlaying, volume, filePath, x, y, z);
+        SonorityInternal.SonoritySourceDidUpdate(_sonorityEngine, source, isPlaying, volume, filePath, x, y, z,isAmbisonic);
     }
 };
 
@@ -130,6 +130,6 @@ public class SonorityIntegration : MonoBehaviour
     public void SourceDidUpdate(SonorityAudioSource sonorityAudioSource)
     {
         var cartesian = sonorityAudioSource.GetCartesianRelativeToListener(ListenerTransform);
-        _sonorityEngine.SourceDidUpdate(sonorityAudioSource.SourceId, sonorityAudioSource.IsPlaying, sonorityAudioSource.Volume, sonorityAudioSource.GetAudioFilePath(), cartesian.x, cartesian.y, cartesian.z);
+        _sonorityEngine.SourceDidUpdate(sonorityAudioSource.SourceId, sonorityAudioSource.IsPlaying, sonorityAudioSource.Volume, sonorityAudioSource.GetAudioFilePath(), cartesian.x, cartesian.y, cartesian.z, sonorityAudioSource.IsAmbisonic);
     }
 }

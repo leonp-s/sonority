@@ -13,6 +13,7 @@ struct VirtualSourceData
     float volume;
     std::string file_path;
     Vector3 cartesian;
+    bool is_ambisonic;
 };
 
 class VirtualSource
@@ -29,7 +30,7 @@ private:
 
     AudioFilePool::SharedBufferHandle shared_buffer_handle_;
 
-    void PlaySource (std::string file_path);
+    void PlaySource (std::string file_path, bool is_ambisonic);
 };
 
 class AudioEngine

@@ -8,6 +8,7 @@ struct WorldSpaceNodeData
 {
     Vector3 cartesian;
     AudioBlockPlayerData player_data;
+    bool is_ambisonic;
 };
 
 class WorldSpaceNode : public juce::dsp::ProcessorBase

@@ -33,7 +33,7 @@ set(BUILD_TESTS false)
 add_subdirectory(${libmysofa_SOURCE_DIR})
 include_directories(${libmysofa_SOURCE_DIR}/src)
 
-add_library(common INTERFACE modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.cpp modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.h modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.cpp modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.h)
+add_library(common INTERFACE modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.cpp modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.h modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.cpp modules/ambisonic_processor/src/ambisonic_processor/AmbisonicEncoder.h modules/audio_graph/src/audio_graph/MultichannelAudioBlockPlayer.cpp modules/audio_graph/src/audio_graph/MultichannelAudioBlockPlayer.h modules/ambisonic_processor/src/ambisonic_processor/AmbisonicRotator.cpp modules/ambisonic_processor/src/ambisonic_processor/AmbisonicRotator.h)
 target_link_libraries(common INTERFACE mysofa-static)
 link_libraries(common)
 

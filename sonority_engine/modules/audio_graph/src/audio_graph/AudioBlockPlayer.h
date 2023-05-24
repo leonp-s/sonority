@@ -6,6 +6,7 @@ struct AudioBlockPlayerData
     juce::dsp::AudioBlock<const float> audio_block;
     int read_position = 0;
     float volume;
+
 };
 
 class AudioBlockPlayer

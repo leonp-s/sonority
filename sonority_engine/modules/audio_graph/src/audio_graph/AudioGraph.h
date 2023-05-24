@@ -1,7 +1,9 @@
 #pragma once
 
 #include "AudioBlockPlayer.h"
+#include "MultichannelAudioBlockPlayer.h"
 #include "ambisonic_processor/AmbisonicEncoder.h"
+#include "ambisonic_processor/AmbisonicRotator.h"
 #include "audio_engine/Vector3.h"
 #include "nodes/WorldSpaceNode.h"
 #include "sofa_renderer/SofaDodecRenderer.h"
@@ -18,13 +20,15 @@ public:
     void process (const juce::dsp::ProcessContextReplacing<float> & replacing) override;
     void reset () override;
 
-    void AddLoopingPlayer (juce::Uuid uuid, juce::dsp::AudioBlock<float> audio_block);
+    void
+    AddLoopingPlayer (juce::Uuid uuid, juce::dsp::AudioBlock<float> audio_block, bool is_ambisonic);
     void RemoveLoopingPlayer (juce::Uuid uuid);
     void UpdateLoopingPlayer (juce::Uuid uuid, Vector3 cartesian, float volume);
 
 private:
     SofaDodecRenderer sofa_dodec_renderer_;
     AmbisonicEncoder ambisonic_encoder_;
+    AmbisonicRotator ambisonic_rotator_;
     std::unordered_map<juce::Uuid, WorldSpaceNodeData> world_space_nodes_;
     juce::AudioBuffer<float> ambisonic_buffer_;
     juce::AudioBuffer<float> player_buffer_;

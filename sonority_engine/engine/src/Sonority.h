@@ -46,5 +46,6 @@ void Internal_SourceDidUpdate (Sonority * sonority,
                                const char * file_path,
                                float x,
                                float y,
-                               float z);
+                               float z,
+                               bool is_ambisonic);
 }

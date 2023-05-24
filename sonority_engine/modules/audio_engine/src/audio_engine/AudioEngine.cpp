@@ -11,10 +11,17 @@ VirtualSource::VirtualSource (AudioGraph & audio_graph,
 
 void VirtualSource::SourceDidUpdate (VirtualSourceData virtual_source_data)
 {
+    if (virtual_source_data.is_ambisonic)
+    juce::Logger::writeToLog (juce::String (virtual_source_data.file_path) +
+                              juce::String ("isAmbisonic: true "));
+    else
+        juce::Logger::writeToLog (juce::String (virtual_source_data.file_path) +
+                                  juce::String ("isAmbisonic: false "));
+
     if (virtual_source_data_.is_playing != virtual_source_data.is_playing)
     {
         if (virtual_source_data.is_playing)
-            PlaySource (virtual_source_data.file_path);
+            PlaySource (virtual_source_data.file_path, virtual_source_data.is_ambisonic);
         else
             audio_graph_.RemoveLoopingPlayer (source_);
     }
@@ -26,13 +33,14 @@ void VirtualSource::SourceDidUpdate (VirtualSourceData virtual_source_data)
     virtual_source_data_ = virtual_source_data;
 }
 
-void VirtualSource::PlaySource (std::string file_path)
+void VirtualSource::PlaySource (std::string file_path, bool is_ambisonic)
 {
     juce::AudioFormatManager audioFormatManager;
     audioFormatManager.registerBasicFormats ();
 
     shared_buffer_handle_ = audio_file_pool_.GetOrLoadAudioFileFromPool (file_path);
-    audio_graph_.AddLoopingPlayer (source_, juce::dsp::AudioBlock<float> (*shared_buffer_handle_));
+    audio_graph_.AddLoopingPlayer (
+        source_, juce::dsp::AudioBlock<float> (*shared_buffer_handle_), is_ambisonic);
 }
 
 AudioEngine::AudioEngine (AudioGraph & audio_graph)

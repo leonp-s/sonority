@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="" />
+    <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/src/Sonority.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaDodecRenderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityAudioSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,14 +29,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f6248cc5b69f4544be5562dd35a4aeae159e00/b8/c8ad1ff6/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f6248cc5b69f4544be5562dd35a4aeae159e00/99/adda5a5f/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -118,10 +125,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12991">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="12991" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
