@@ -12,27 +12,12 @@ public:
     void process (juce::dsp::ProcessContextNonReplacing<float> & processContext, Vector3 cartesian);
 
 private:
-    int temp_timer = 0;
-    float azimuth_degrees = 0.f;
+    using RotationMatrix = std::array<std::array<float, 9>, 9>;
 
-    void processWChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processYChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processZChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processXChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processVChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processTChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processRChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processSChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
-    void processUChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                          float azimuth);
+    static inline RotationMatrix GenerateXAxisRotationMatrixACN (float angle);
+    static inline RotationMatrix GenerateYAxisRotationMatrixACN (float angle);
+    static inline RotationMatrix GenerateZAxisRotationMatrixACN (float angle);
 
-    juce::AudioBuffer<float> input_buffer_;
+    static inline void ApplyRotationMatrixToAudioBlock (juce::dsp::AudioBlock<float> & input_block,
+                                                        const RotationMatrix & rotation_matrix);
 };

@@ -1,10 +1,4 @@
-
 #include "AmbisonicRotator.h"
-
-static float DegreesToRadians (float degrees) noexcept
-{
-    return (juce::MathConstants<float>::pi / 180.0f) * degrees;
-}
 
 AmbisonicRotator::AmbisonicRotator ()
 {
@@ -12,7 +6,6 @@ AmbisonicRotator::AmbisonicRotator ()
 
 void AmbisonicRotator::prepare (const juce::dsp::ProcessSpec & spec)
 {
-    input_buffer_.setSize (9, spec.maximumBlockSize);
 }
 
 void AmbisonicRotator::process (juce::dsp::ProcessContextNonReplacing<float> & processContext,
@@ -21,129 +14,151 @@ void AmbisonicRotator::process (juce::dsp::ProcessContextNonReplacing<float> & p
     jassert (processContext.getOutputBlock ().getNumChannels () == 9);
 
     std::array<float, 3> spherical_coordinates = {cartesian.x, cartesian.y, cartesian.z};
-
     mysofa_c2s (spherical_coordinates.data ());
-    // float azimuth_degrees = spherical_coordinates [0];
-    // float elevation_degrees = spherical_coordinates [1];
+    float azimuth_degrees = spherical_coordinates [0];
+}
 
-    if (temp_timer > 500)
+void AmbisonicRotator::ApplyRotationMatrixToAudioBlock (
+    juce::dsp::AudioBlock<float> & input_block,
+    const AmbisonicRotator::RotationMatrix & rotation_matrix)
+{
+    const auto num_channels = input_block.getNumChannels ();
+    const auto num_samples = input_block.getNumSamples ();
+
+    for (int output_channel_index = 0; output_channel_index < num_channels; ++output_channel_index)
     {
-        azimuth_degrees = azimuth_degrees + 1.f;
-        temp_timer = 0;
+        float * channel_data = input_block.getChannelPointer (output_channel_index);
+
+        for (int sample = 0; sample < num_samples; ++sample)
+        {
+            float summed_output = 0.0f;
+            const float * input_data = input_block.getChannelPointer (0);
+
+            for (int input_acn_channel = 0; input_acn_channel < num_channels; ++input_acn_channel)
+                summed_output += rotation_matrix [output_channel_index] [input_acn_channel] * input_data [input_acn_channel];
+
+            channel_data [sample] = summed_output;
+            input_data += num_channels;
+        }
     }
-
-    if (azimuth_degrees >= 360.f)
-        azimuth_degrees = 0.f;
-    temp_timer = temp_timer + 1;
-
-    processWChannel (processContext, azimuth_degrees);
-    processYChannel (processContext, azimuth_degrees);
-    processZChannel (processContext, azimuth_degrees);
-    processXChannel (processContext, azimuth_degrees);
-    processVChannel (processContext, azimuth_degrees);
-    processTChannel (processContext, azimuth_degrees);
-    processRChannel (processContext, azimuth_degrees);
-    processSChannel (processContext, azimuth_degrees);
-    processUChannel (processContext, azimuth_degrees);
 }
 
-void AmbisonicRotator::processWChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
+AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateXAxisRotationMatrixACN (float angle)
 {
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (0);
+    AmbisonicRotator::RotationMatrix acn_matrix {};
 
-    auto input_block = processContext.getInputBlock ();
+    const float cos_a = std::cos (angle);
+    const float sin_a = std::sin (angle);
+    const float cos_2a = std::cos (2.f * angle);
+    const float sin_2a = std::sin (2.f * angle);
+    const float sqrt3_over_4 = std::sqrt (3.f / 4.f);
+    const float sqrt3_over_16 = std::sqrt (3.f / 16.f);
 
-    auto input_block_0 = input_block.getSingleChannelBlock (0);
-    output_block.addProductOf (input_block_0, 1.f);
+    acn_matrix [0][0] = 1.f;
+
+    acn_matrix [1][1] = cos_a;
+    acn_matrix [1][2] = -sin_a;
+
+    acn_matrix [2][1] = sin_a;
+    acn_matrix [2][2] = cos_a;
+
+    acn_matrix [3][3] = 1.f;
+
+    acn_matrix [4][4] = cos_a;
+    acn_matrix [4][7] = -sin_a;
+
+    acn_matrix [5][5] = cos_2a;
+    acn_matrix [5][6] = -sqrt3_over_4 * sin_2a;
+    acn_matrix [5][8] = -0.5f * sin_2a;
+
+    acn_matrix [6][5] = sqrt3_over_4 * sin_2a;
+    acn_matrix [6][6] = 0.25f * (1.f + 3.f * cos_2a);
+    acn_matrix [6][8] = -sqrt3_over_16 * (1.f - cos_2a);
+
+    acn_matrix [7][4] = sin_a;
+    acn_matrix [7][7] = cos_a;
+
+    acn_matrix [8][5] = 0.5f * sin_2a;
+    acn_matrix [8][6] = -sqrt3_over_16 * (1.f - cos_2a);
+    acn_matrix [8][8] = 0.25f * (3.f + cos_2a);
+
+    return acn_matrix;
 }
-void AmbisonicRotator::processYChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
+
+AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateYAxisRotationMatrixACN (float angle)
 {
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (1);
-    auto input_block = processContext.getInputBlock ();
+    AmbisonicRotator::RotationMatrix acn_matrix {};
 
-    auto input_block_1 = input_block.getSingleChannelBlock (1);
-    output_block.addProductOf (input_block_1, std::cos (azimuth));
+    const float cos_a = std::cos (angle);
+    const float sin_a = std::sin (angle);
+    const float cos_2a = std::cos (2.f * angle);
+    const float sin_2a = std::sin (2.f * angle);
+    const float sqrt3_over_4 = std::sqrt (3.f / 4.f);
+    const float sqrt3_over_16 = std::sqrt (3.f / 16.f);
 
-    auto input_block_3 = input_block.getSingleChannelBlock (3);
-    output_block.addProductOf (input_block_3, std::sin (azimuth));
+    acn_matrix [0][0] = 1.f;
+
+    acn_matrix [1][1] = 1.f;
+
+    acn_matrix [2][2] = cos_a;
+    acn_matrix [2][3] = sin_a;
+
+    acn_matrix [3][2] = -sin_a;
+    acn_matrix [3][3] = cos_a;
+
+    acn_matrix [4][4] = cos_a;
+    acn_matrix [4][5] = -sin_a;
+
+    acn_matrix [5][4] = sin_a;
+    acn_matrix [5][5] = cos_a;
+
+    acn_matrix [6][6] = 0.25f * (1.f + 3.f * cos_2a);
+    acn_matrix [6][7] = sqrt3_over_4 * sin_2a;
+    acn_matrix [6][8] = sqrt3_over_16 * (1.f - cos_2a);
+
+    acn_matrix [7][6] = -sqrt3_over_4 * sin_2a;
+    acn_matrix [7][7] = cos_2a;
+    acn_matrix [7][8] = 0.5f * sin_2a;
+
+    acn_matrix [8][6] = sqrt3_over_16 * (1.f - cos_2a);
+    acn_matrix [8][7] = -0.5f * sin_2a;
+    acn_matrix [8][8] = 0.25f * (3.f + cos_2a);
+
+    return acn_matrix;
 }
-void AmbisonicRotator::processZChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
+
+AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateZAxisRotationMatrixACN (float angle)
 {
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (2);
-    auto input_block = processContext.getInputBlock ();
+    AmbisonicRotator::RotationMatrix acn_matrix {};
 
-    auto input_block_2 = input_block.getSingleChannelBlock (2);
-    output_block.addProductOf (input_block_2, 1.f);
-}
-void AmbisonicRotator::processXChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
-{
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (3);
-    auto input_block = processContext.getInputBlock ();
+    const float cos_a = std::cos (angle);
+    const float sin_a = std::sin (angle);
+    const float cos_2a = std::cos (2.f * angle);
+    const float sin_2a = std::sin (2.f * angle);
 
-    auto input_block_1 = input_block.getSingleChannelBlock (1);
-    output_block.addProductOf (input_block_1, -1.f * std::sin (azimuth));
+    acn_matrix [0][0] = 1.f;
 
-    auto input_block_3 = input_block.getSingleChannelBlock (3);
-    output_block.addProductOf (input_block_3, std::cos (azimuth));
-}
-void AmbisonicRotator::processVChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
-{
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (4);
-    auto input_block = processContext.getInputBlock ();
+    acn_matrix [1][1] = cos_a;
+    acn_matrix [1][3] = sin_a;
 
-    auto input_block_4 = input_block.getSingleChannelBlock (4);
-    output_block.addProductOf (input_block_4, std::cos (2.f * azimuth));
+    acn_matrix [2][2] = 1.f;
 
-    auto input_block_8 = input_block.getSingleChannelBlock (8);
-    output_block.addProductOf (input_block_8, std::sin (2.f * azimuth));
-}
-void AmbisonicRotator::processTChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
-{
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (5);
-    auto input_block = processContext.getInputBlock ();
+    acn_matrix [3][1] = -sin_a;
+    acn_matrix [3][3] = cos_a;
 
-    auto input_block_5 = input_block.getSingleChannelBlock (5);
-    output_block.addProductOf (input_block_5, std::cos (azimuth));
+    acn_matrix [4][4] = cos_2a;
+    acn_matrix [4][8] = sin_2a;
 
-    auto input_block_7 = input_block.getSingleChannelBlock (7);
-    output_block.addProductOf (input_block_7, std::sin (azimuth));
-}
-void AmbisonicRotator::processRChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
-{
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (6);
-    auto input_block = processContext.getInputBlock ();
+    acn_matrix [5][5] = cos_a;
+    acn_matrix [5][7] = sin_a;
 
-    auto input_block_6 = input_block.getSingleChannelBlock (6);
-    output_block.addProductOf (input_block_6, 1.f);
-}
-void AmbisonicRotator::processSChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
-{
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (7);
-    auto input_block = processContext.getInputBlock ();
+    acn_matrix [6][6] = 1.f;
 
-    auto input_block_5 = input_block.getSingleChannelBlock (5);
-    output_block.addProductOf (input_block_5, -1.f * std::sin (azimuth));
+    acn_matrix [7][5] = -sin_a;
+    acn_matrix [7][7] = cos_a;
 
-    auto input_block_7 = input_block.getSingleChannelBlock (7);
-    output_block.addProductOf (input_block_7, std::cos (azimuth));
-}
-void AmbisonicRotator::processUChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
-                                        float azimuth)
-{
-    auto output_block = processContext.getOutputBlock ().getSingleChannelBlock (8);
-    auto input_block = processContext.getInputBlock ();
+    acn_matrix [8][4] = -sin_2a;
+    acn_matrix [8][8] = cos_2a;
 
-    auto input_block_4 = input_block.getSingleChannelBlock (4);
-    output_block.addProductOf (input_block_4, -1.f * std::sin (2.f * azimuth));
-
-    auto input_block_8 = input_block.getSingleChannelBlock (8);
-    output_block.addProductOf (input_block_8, std::cos (2.f * azimuth));
+    return acn_matrix;
 }

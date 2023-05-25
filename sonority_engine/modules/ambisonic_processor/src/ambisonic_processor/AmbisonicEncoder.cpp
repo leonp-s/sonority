@@ -37,7 +37,7 @@ void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & p
          ++output_channel_index)
     {
         auto output_channel_block = output_block.getSingleChannelBlock (output_channel_index);
-        auto channel_gain = second_order_table [CoefficientChannelOrder [output_channel_index]];
+        auto channel_gain = second_order_table [kFMCoefficientChannelOrder [output_channel_index]];
         for (auto input_channel_index = 0; input_channel_index < input_block.getNumChannels ();
              ++input_channel_index)
         {
@@ -46,6 +46,7 @@ void AmbisonicEncoder::process (juce::dsp::ProcessContextNonReplacing<float> & p
         }
     }
 }
+
 std::array<float, 9> AmbisonicEncoder::BuildSecondOrderTable (float azimuth, float elevation)
 {
     std::array<float, 9> gain_table;

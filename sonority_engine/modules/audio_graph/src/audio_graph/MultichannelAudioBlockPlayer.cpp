@@ -9,8 +9,7 @@ void MultichannelAudioBlockPlayer::Process (
     auto output_block = replacing.getOutputBlock ();
     auto output_block_length = output_block.getNumSamples ();
     auto audio_block_length = audio_block.getNumSamples ();
-
-
+    
     for (auto channel_index = 0; channel_index < audio_block.getNumChannels (); ++channel_index)
     {
         auto current_audio_block = audio_block.getSubsetChannelBlock (channel_index, 1);
