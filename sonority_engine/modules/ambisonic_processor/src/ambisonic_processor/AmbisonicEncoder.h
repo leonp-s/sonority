@@ -32,7 +32,8 @@ public:
                                                                     Coefficients::S,
                                                                     Coefficients::U};
 
-private:
+    [[nodiscard]] static float DegreesToRadians (float degrees) noexcept;
 
+private:
     std::array<float, 9> BuildSecondOrderTable (float azimuth, float elevation);
 };

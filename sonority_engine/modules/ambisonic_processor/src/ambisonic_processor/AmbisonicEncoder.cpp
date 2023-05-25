@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-static float DegreesToRadians (float degrees) noexcept
+float AmbisonicEncoder::DegreesToRadians (float degrees) noexcept
 {
     return (juce::MathConstants<float>::pi / 180.0f) * degrees;
 }
