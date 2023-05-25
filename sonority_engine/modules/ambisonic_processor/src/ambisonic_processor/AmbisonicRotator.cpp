@@ -18,35 +18,33 @@ void AmbisonicRotator::process (juce::dsp::ProcessContextNonReplacing<float> & p
     float azimuth_degrees = spherical_coordinates [0];
 }
 
-void AmbisonicRotator::ApplyRotationMatrixToAudioBlock (
-    juce::dsp::AudioBlock<float> & input_block,
-    const AmbisonicRotator::RotationMatrix & rotation_matrix)
+void AmbisonicRotator::ApplyChannelRotationMatrixToAudioBlock (
+    juce::dsp::ProcessContextNonReplacing<float> process_context,
+    const AmbisonicRotator::ChannelRotationMatrix & rotation_matrix)
 {
-    const auto num_channels = input_block.getNumChannels ();
-    const auto num_samples = input_block.getNumSamples ();
+    auto input_block = process_context.getInputBlock ();
+    auto output_block = process_context.getOutputBlock ();
+
+    const int num_channels = input_block.getNumChannels ();
+    const int num_samples = input_block.getNumSamples ();
 
     for (int output_channel_index = 0; output_channel_index < num_channels; ++output_channel_index)
     {
-        float * channel_data = input_block.getChannelPointer (output_channel_index);
-
-        for (int sample = 0; sample < num_samples; ++sample)
+        auto output_channel_block = output_block.getSingleChannelBlock (output_channel_index);
+        for (const auto & channel_coefficient : rotation_matrix [output_channel_index])
         {
-            float summed_output = 0.0f;
-            const float * input_data = input_block.getChannelPointer (0);
+            const int input_channel_index = channel_coefficient.first;
+            auto input_channel_block = input_block.getSingleChannelBlock (input_channel_index);
+            const float coefficient = channel_coefficient.second;
 
-            for (int input_acn_channel = 0; input_acn_channel < num_channels; ++input_acn_channel)
-                summed_output += rotation_matrix [output_channel_index] [input_acn_channel] * input_data [input_acn_channel];
-
-            channel_data [sample] = summed_output;
-            input_data += num_channels;
+            output_block.addProductOf (input_channel_block, coefficient);
         }
     }
 }
 
-AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateXAxisRotationMatrixACN (float angle)
+AmbisonicRotator::ChannelRotationMatrix
+AmbisonicRotator::GenerateXAxisRotationMatrixACN (float angle)
 {
-    AmbisonicRotator::RotationMatrix acn_matrix {};
-
     const float cos_a = std::cos (angle);
     const float sin_a = std::sin (angle);
     const float cos_2a = std::cos (2.f * angle);
@@ -54,35 +52,19 @@ AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateXAxisRotationMatrixAC
     const float sqrt3_over_4 = std::sqrt (3.f / 4.f);
     const float sqrt3_over_16 = std::sqrt (3.f / 16.f);
 
-    acn_matrix [0][0] = 1.f;
-
-    acn_matrix [1][1] = cos_a;
-    acn_matrix [1][2] = -sin_a;
-
-    acn_matrix [2][1] = sin_a;
-    acn_matrix [2][2] = cos_a;
-
-    acn_matrix [3][3] = 1.f;
-
-    acn_matrix [4][4] = cos_a;
-    acn_matrix [4][7] = -sin_a;
-
-    acn_matrix [5][5] = cos_2a;
-    acn_matrix [5][6] = -sqrt3_over_4 * sin_2a;
-    acn_matrix [5][8] = -0.5f * sin_2a;
-
-    acn_matrix [6][5] = sqrt3_over_4 * sin_2a;
-    acn_matrix [6][6] = 0.25f * (1.f + 3.f * cos_2a);
-    acn_matrix [6][8] = -sqrt3_over_16 * (1.f - cos_2a);
-
-    acn_matrix [7][4] = sin_a;
-    acn_matrix [7][7] = cos_a;
-
-    acn_matrix [8][5] = 0.5f * sin_2a;
-    acn_matrix [8][6] = -sqrt3_over_16 * (1.f - cos_2a);
-    acn_matrix [8][8] = 0.25f * (3.f + cos_2a);
-
-    return acn_matrix;
+    return {ChannelCoefficientMap {{0, 1.f}},
+            ChannelCoefficientMap {{1, cos_a}, {2, -sin_a}},
+            ChannelCoefficientMap {{1, sin_a}, {2, cos_a}},
+            ChannelCoefficientMap {{3, 1.f}},
+            ChannelCoefficientMap {{4, cos_a}, {7, -sin_a}},
+            ChannelCoefficientMap {{5, cos_2a}, {6, -sqrt3_over_4 * sin_2a}, {8, -0.5f * sin_2a}},
+            ChannelCoefficientMap {{5, sqrt3_over_4 * sin_2a},
+                                   {6, 0.25f * (1.f + 3.f * cos_2a)},
+                                   {8, -sqrt3_over_16 * (1.f - cos_2a)}},
+            ChannelCoefficientMap {{4, sin_a}, {7, cos_a}},
+            ChannelCoefficientMap {{5, 0.5f * sin_2a},
+                                   {6, -sqrt3_over_16 * (1.f - cos_2a)},
+                                   {8, 0.25f * (3.f + cos_2a)}}};
 }
 
 AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateYAxisRotationMatrixACN (float angle)
@@ -96,33 +78,29 @@ AmbisonicRotator::RotationMatrix AmbisonicRotator::GenerateYAxisRotationMatrixAC
     const float sqrt3_over_4 = std::sqrt (3.f / 4.f);
     const float sqrt3_over_16 = std::sqrt (3.f / 16.f);
 
-    acn_matrix [0][0] = 1.f;
+    ChannelRotationMatrix channel_rotation_matrix {};
 
-    acn_matrix [1][1] = 1.f;
+    acn_matrix [0] = ChannelCoefficientMap {{0, 1.f}};
 
-    acn_matrix [2][2] = cos_a;
-    acn_matrix [2][3] = sin_a;
+    acn_matrix [1] = ChannelCoefficientMap {{1, 1.f}};
 
-    acn_matrix [3][2] = -sin_a;
-    acn_matrix [3][3] = cos_a;
+    acn_matrix [2] = ChannelCoefficientMap {{2, cos_a}, {3, sin_a}};
 
-    acn_matrix [4][4] = cos_a;
-    acn_matrix [4][5] = -sin_a;
+    acn_matrix [3] = ChannelCoefficientMap {{2, -sin_a}, {3, cos_a}};
 
-    acn_matrix [5][4] = sin_a;
-    acn_matrix [5][5] = cos_a;
+    acn_matrix [4] = ChannelCoefficientMap {{4, cos_a}, {5, -sin_a}};
 
-    acn_matrix [6][6] = 0.25f * (1.f + 3.f * cos_2a);
-    acn_matrix [6][7] = sqrt3_over_4 * sin_2a;
-    acn_matrix [6][8] = sqrt3_over_16 * (1.f - cos_2a);
+    acn_matrix [5] = ChannelCoefficientMap {{4, sin_a}, {5, cos_a}};
 
-    acn_matrix [7][6] = -sqrt3_over_4 * sin_2a;
-    acn_matrix [7][7] = cos_2a;
-    acn_matrix [7][8] = 0.5f * sin_2a;
+    acn_matrix [6] = ChannelCoefficientMap {{6, 0.25f * (1.f + 3.f * cos_2a)},
+                                            {7, sqrt3_over_4 * sin_2a},
+                                            {8, sqrt3_over_16 * (1.f - cos_2a)}};
 
-    acn_matrix [8][6] = sqrt3_over_16 * (1.f - cos_2a);
-    acn_matrix [8][7] = -0.5f * sin_2a;
-    acn_matrix [8][8] = 0.25f * (3.f + cos_2a);
+    acn_matrix [7] =
+        ChannelCoefficientMap {{6, -sqrt3_over_4 * sin_2a}, {7, cos_2a}, {8, 0.5f * sin_2a}};
+
+    acn_matrix [8] = ChannelCoefficientMap {
+        {6, sqrt3_over_16 * (1.f - cos_2a)}, {7, -0.5f * sin_2a}, {8, 0.25f * (3.f + cos_2a)}};
 
     return acn_matrix;
 }
