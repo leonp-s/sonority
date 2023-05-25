@@ -34,6 +34,7 @@ void AudioGraph::prepare (const juce::dsp::ProcessSpec & spec)
     sofa_dodec_renderer_.prepare (spec);
     ambisonic_buffer_.setSize (9, spec.maximumBlockSize, false, false, false);
     ambisonic_rotator_.prepare (spec);
+    temp_ambisonic_buffer.setSize (9, spec.maximumBlockSize);
 }
 
 void AudioGraph::process (const juce::dsp::ProcessContextReplacing<float> & replacing)
@@ -47,15 +48,18 @@ void AudioGraph::process (const juce::dsp::ProcessContextReplacing<float> & repl
     juce::dsp::ProcessContextNonReplacing<float> ambisonic_context {output_block,
                                                                     ambisonic_process_block};
 
-    juce::dsp::ProcessContextReplacing<float> ambisonic_context_replacing {ambisonic_process_block};
+    juce::dsp::AudioBlock<float> temp_ambisonic_block {temp_ambisonic_buffer};
+    juce::dsp::ProcessContextReplacing<float> ambisonic_replacing {temp_ambisonic_block};
+    juce::dsp::ProcessContextNonReplacing<float> ambisonic_rotation_context {
+        temp_ambisonic_buffer, ambisonic_process_block};
     for (auto & audio_block_player_data : world_space_nodes_)
     {
         if (audio_block_player_data.second.is_ambisonic)
         {
-            MultichannelAudioBlockPlayer::Process (ambisonic_context_replacing,
-                                                   audio_block_player_data.second.player_data);
-            // ambisonic_rotator_.process (ambisonic_context_replacing,
-            // audio_block_player_data.second.cartesian);
+            //            AudioBlockPlayer::Process (ambisonic_replacing,
+            //                                       audio_block_player_data.second.player_data);
+            //            ambisonic_rotator_.process (ambisonic_rotation_context,
+            //                                        audio_block_player_data.second.cartesian);
         }
         else
         {
@@ -68,6 +72,11 @@ void AudioGraph::process (const juce::dsp::ProcessContextReplacing<float> & repl
     output_block.clear ();
     juce::dsp::ProcessContextNonReplacing<float> sofa_context {ambisonic_process_block,
                                                                output_block};
+
+    juce::dsp::ProcessContextNonReplacing<float> temp_context {ambisonic_process_block,
+                                                               ambisonic_process_block};
+
+    ambisonic_rotator_.process (temp_context, world_space_nodes_ [0].cartesian);
     sofa_dodec_renderer_.process (sofa_context);
 }
 

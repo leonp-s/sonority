@@ -11,13 +11,6 @@ VirtualSource::VirtualSource (AudioGraph & audio_graph,
 
 void VirtualSource::SourceDidUpdate (VirtualSourceData virtual_source_data)
 {
-    if (virtual_source_data.is_ambisonic)
-    juce::Logger::writeToLog (juce::String (virtual_source_data.file_path) +
-                              juce::String ("isAmbisonic: true "));
-    else
-        juce::Logger::writeToLog (juce::String (virtual_source_data.file_path) +
-                                  juce::String ("isAmbisonic: false "));
-
     if (virtual_source_data_.is_playing != virtual_source_data.is_playing)
     {
         if (virtual_source_data.is_playing)

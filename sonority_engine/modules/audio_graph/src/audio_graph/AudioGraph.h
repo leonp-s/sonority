@@ -32,5 +32,6 @@ private:
     std::unordered_map<juce::Uuid, WorldSpaceNodeData> world_space_nodes_;
     juce::AudioBuffer<float> ambisonic_buffer_;
     juce::AudioBuffer<float> player_buffer_;
+    juce::AudioBuffer<float> temp_ambisonic_buffer;
     std::vector<int> schedule_;
 };

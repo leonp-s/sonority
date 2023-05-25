@@ -1,6 +1,7 @@
 #pragma once
 #include "audio_engine/Vector3.h"
 
+#include <hrtf/mysofa.h>
 #include <juce_dsp/juce_dsp.h>
 
 class AmbisonicRotator
@@ -11,6 +12,9 @@ public:
     void process (juce::dsp::ProcessContextNonReplacing<float> & processContext, Vector3 cartesian);
 
 private:
+    int temp_timer = 0;
+    float azimuth_degrees = 0.f;
+
     void processWChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
                           float azimuth);
     void processYChannel (juce::dsp::ProcessContextNonReplacing<float> processContext,
