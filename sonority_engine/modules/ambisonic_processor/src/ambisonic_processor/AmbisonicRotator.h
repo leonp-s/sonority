@@ -14,23 +14,22 @@ public:
 private:
     using RotationMatrix = std::array<std::array<float, 9>, 9>;
 
-    template <typename W,
-              typename X,
-              typename Y,
-              typename Z,
-              typename R,
-              typename S,
-              typename T,
-              typename U,
-              typename V>
-    using ChannelCoefficientMap = std::map<int, float>;
-    using ChannelRotationMatrix = std::array<ChannelCoefficientMap, 9>;
+    using ChannelCoefficient = std::pair<int, float>;
 
-    static inline ChannelRotationMatrix GenerateXAxisRotationMatrixACN (float angle);
-    static inline RotationMatrix GenerateYAxisRotationMatrixACN (float angle);
-    static inline RotationMatrix GenerateZAxisRotationMatrixACN (float angle);
+    template <auto N>
+    using ChannelCoefficients = std::array<ChannelCoefficient, N>;
 
+    template <auto... Ns>
+    using ChannelRotationMatrix = std::tuple<ChannelCoefficients<Ns>...>;
+
+    using XAxisChannelRotationMatrix = ChannelRotationMatrix<1, 2, 2, 1, 2, 3, 3, 2, 3>;
+    static inline XAxisChannelRotationMatrix GenerateXAxisRotationMatrixACN (float angle);
+
+    //    static inline RotationMatrix GenerateYAxisRotationMatrixACN (float angle);
+    //    static inline RotationMatrix GenerateZAxisRotationMatrixACN (float angle);
+
+    template <auto... Ns>
     static inline void ApplyChannelRotationMatrixToAudioBlock (
         juce::dsp::ProcessContextNonReplacing<float> process_context,
-        const ChannelRotationMatrix & rotation_matrix);
+        const ChannelRotationMatrix<Ns...> & rotation_matrix);
 };
