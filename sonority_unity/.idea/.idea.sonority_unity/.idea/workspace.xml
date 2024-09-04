@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46cda319-0704-433a-9e1d-add4c0cbbd13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/engine/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/sofa_renderer/src/sofa_renderer/SofaFilter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_engine/src/audio_engine/AudioEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_engine/src/audio_engine/AudioEngine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/../sonority_engine/modules/audio_graph/src/audio_graph/AudioGraph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sonority_unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +25,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/NativePluginLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f6248cc5b69f4544be5562dd35a4aeae159e00/b8/c8ad1ff6/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/sonority/src/SonorityIntegration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NoiseInducer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -77,7 +76,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
@@ -144,6 +151,7 @@
       <workItem from="1684254421088" duration="7045000" />
       <workItem from="1684336442308" duration="3242000" />
       <workItem from="1684418731133" duration="2041000" />
+      <workItem from="1684843753581" duration="12682000" />
     </task>
     <servers />
   </component>

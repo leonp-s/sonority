@@ -1,10 +1,5 @@
 #include "Sonority.h"
 
-void Sonority::SetPlayingNoise (bool is_playing_noise)
-{
-    sonority_rt_callback_.is_playing_noise_ = is_playing_noise;
-}
-
 void Sonority::Prepare ()
 {
     audio_device_manager_.initialiseWithDefaultDevices (0, 2);
@@ -15,6 +10,21 @@ void Sonority::Release ()
 {
     audio_device_manager_.closeAudioDevice ();
     juce::Logger::setCurrentLogger (nullptr);
+}
+
+juce::Uuid Sonority::RequestCreateSource ()
+{
+    return audio_engine_.RequestCreateSource ();
+}
+
+void Sonority::DeleteSource (juce::Uuid source)
+{
+    audio_engine_.DeleteSource (source);
+}
+
+void Sonority::SourceDidUpdate (juce::Uuid source, VirtualSourceData source_data)
+{
+    audio_engine_.SourceDidUpdate (source, source_data);
 }
 
 extern "C"
@@ -31,24 +41,9 @@ Sonority * Internal_CreateSonority ()
     return new Sonority ();
 }
 
-void Sonority::PlayWavFile ()
-{
-    sonority_rt_callback_.ScheduleFile ();
-}
-
-void Sonority::UpdateSphericalCoordinates (float azimuth, float elevation)
-{
-    sonority_rt_callback_.UpdateFilters (azimuth, elevation);
-}
-
 void Internal_DestroySonority (Sonority * sonority)
 {
     delete sonority;
-}
-
-void Internal_SonoritySetPlayingNoise (Sonority * sonority, bool is_playing_noise)
-{
-    sonority->SetPlayingNoise (is_playing_noise);
 }
 
 void Internal_SonorityPrepare (Sonority * sonority)
@@ -60,14 +55,35 @@ void Internal_SonorityRelease (Sonority * sonority)
 {
     sonority->Release ();
 }
-
-void Internal_SonorityPlayWavFile (Sonority * sonority)
-{
-    sonority->PlayWavFile ();
 }
 
-void Internal_SonoritySetSphericalCoordinates (Sonority * sonority, float azimuth, float elevation)
+void Internal_RequestCreateSource (Sonority * sonority, char * source)
 {
-    sonority->UpdateSphericalCoordinates (azimuth, elevation);
+    auto uuid = sonority->RequestCreateSource ();
+    strcpy (source, uuid.toString ().toRawUTF8 ());
 }
+
+void Internal_DeleteSource (Sonority * sonority, const char * source)
+{
+    auto source_uuid = juce::Uuid (source);
+    sonority->DeleteSource (source_uuid);
+}
+
+void Internal_SourceDidUpdate (Sonority * sonority,
+                               const char * source,
+                               bool is_playing,
+                               float volume,
+                               const char * file_path,
+                               float x,
+                               float y,
+                               float z,
+                               bool is_ambisonic)
+{
+    auto source_uuid = juce::Uuid (source);
+    sonority->SourceDidUpdate (source_uuid,
+                               VirtualSourceData {.is_playing = is_playing,
+                                                  .volume = volume,
+                                                  .file_path = file_path,
+                                                  .cartesian = Vector3 {.x = x, .y = y, .z = z},
+                                                  .is_ambisonic = is_ambisonic});
 }

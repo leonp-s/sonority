@@ -20,7 +20,7 @@ private:
     std::array<SofaRenderer, 12> sofa_renderers_;
     SofaFilter sofa_filter_ {SofaFilter::OpenOptions {
         .hrtf_path = std::filesystem::path (
-            "/Users/micahstrange/sonority/sonority_engine/RIEC_hrir_subject_001.sofa"),
+            "/Users/LeonP-S/Documents/Development/sonority/sonority_engine/MIT_KEMAR_normal_pinna.sofa"),
         .sample_rate = 48000,
     }};
     std::array<juce::AudioBuffer<float>, 12> hrir_buffers_;
